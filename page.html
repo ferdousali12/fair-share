@@ -1,0 +1,3374 @@
+<style>
+    .custom-header {
+        background-color: #2483c8;
+        color: #fff;
+        font-weight: bold;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        margin-bottom: -1px;
+        border: 1px solid #ddd;
+    }
+    
+    .custom-subheader {
+        background-color: #0096FF; /* Match the color of the custom header */
+        color: #fff;
+        font-weight: bold;
+        padding: 10px;
+        text-align: center;
+        border-bottom: 1px solid #ddd; /* Ensure it aligns with the table border */
+    }
+    
+    .table-bordered {
+        border-top: none; /* Remove top border to blend with the header */
+    }
+
+    @media (max-width: 768px) {
+
+        .custom-subheader {
+        font-size: 10px; /* Slightly smaller headers */
+        padding: 1px;
+        border-bottom: 1px solid #ddd; /* Ensure it aligns with the table border */
+
+    }
+
+    .custom-fs{
+        font-size: 10px !important; /* Slightly smaller headers */
+    }
+
+
+        table {
+            font-size: 6px; /* Reduce font size for small screens */
+        }
+        th, td {
+            padding: 5px; /* Reduce padding */
+            text-align: center;
+        }
+        thead th {
+            font-size: 6px;/* Slightly smaller headers */
+        }
+        tbody tr {
+            line-height: 1.2; /* Compact row height */
+        }
+        .container {
+            padding: 10px; /* Reduce container padding */
+        }
+        .page-header h1 {
+            font-size: 8px; /* Smaller header on mobile */
+        }
+    }
+    
+    [dir="rtl"] .flip-arrow {
+        transform: scaleX(-1);
+    }
+
+    
+    
+</style>
+
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    
+<title>Tariff Guide</title>
+
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    
+    <meta name="csrf-token" content="Msaklge2OE34TyNEDDJOVOh7gXhvz0LaW5jnKpCn">
+
+
+    <!-- Favicon -->
+    
+    <link rel="icon" href="https://iesco.com.pk/storage/favicon.png" sizes="16x16" type="image/x-icon">
+    
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    
+
+
+    <!-- Customized Bootstrap Stylesheet -->
+
+    <link rel="stylesheet" href="https://iesco.com.pk/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://iesco.com.pk/css/style.css?v=1786329362">
+    <script src="https://iesco.com.pk/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Template Stylesheet -->
+
+    <script src="https://iesco.com.pk/js/jquery-3.4.1.min.js"></script>
+
+    
+    
+    
+    
+
+    <script src="https://iesco.com.pk/js/main.js"></script>
+
+    <style>
+        /* Main container for carousel and services */
+        .carousel-services-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch; /* Ensures both sections stretch to the same height */
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* Carousel adjustments */
+        #header-carousel {
+            flex: 1;
+            max-width: 50%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 400px; /* Fixed height for carousel */
+        }
+
+        #header-carousel img {
+            width: 100%;
+            height: 100%; /* Fill the container's fixed height */
+            object-fit: cover; /* Ensures the image covers the area without distortion */
+        }
+
+        /* Service box adjustments */
+        .services-right {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            height: 400px; /* Fixed height to match the carousel */
+            align-self: stretch; /* Ensures the service section stretches to match the carousel */
+        }
+
+        .service-item {
+            background-color: #eff4f8;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 100%; /* Ensures each service box fills the available height */
+        }
+
+        .service-item:hover {
+            background-color: #dbe5ed;
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 35px;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .service-item h4 {
+            font-size: 1.1rem;
+            margin-top: 5px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .carousel-services-container {
+                flex-direction: column;
+                height: auto; /* Allows flexibility in smaller screens */
+            }
+
+            #header-carousel {
+                max-width: 100%;
+                height: 300px; /* Reduced fixed height for smaller screens */
+            }
+
+            .services-right {
+                grid-template-columns: repeat(2, 1fr);
+                height: 300px; /* Match height with carousel on smaller screens */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .services-right {
+                grid-template-columns: 1fr;
+                height: auto; /* Flexible height on very small screens */
+            }
+
+            #header-carousel {
+                height: auto; /* Auto height on smaller screens */
+            }
+        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        .align-items-center {
+            align-items: center; /* Aligns items (image and text) vertically centered */
+        }
+
+        .ms-3 {
+            margin-left: 1rem; /* Adds space between the logo and the text */
+        }
+        /* General Styling for Portals Section */
+        /* General Styling for Portals Section */
+        .portal-box {
+            transition: all 0.3s ease;
+            background-color: #f8f9fa;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .portal-box:hover {
+            transform: translateY(-5px);
+            background-color:  #dbe5ed;
+        }
+
+        /* Styling for the clickable box */
+        .clickable-box {
+            height: 100px; /* Adjusted height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .clickable-box:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        .portal-box h6 {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* Responsive styling */
+        @media (max-width: 768px) {
+            .portal-box {
+                margin-bottom: 20px;
+            }
+
+            .clickable-box {
+                height: 100px; /* Adjusted height for smaller screens */
+            }
+        }
+        /* Ensure all gallery images have the same size */
+        .gallery-img {
+            width: 100%; /* Makes the image fill the available width */
+            height: 100px; /* Fixed height */
+            object-fit: cover; /* Maintains aspect ratio and crops the image if needed */
+        }
+
+        /* For modal image size */
+        .modal-body img {
+            width: 100%; /* Makes the modal image responsive */
+            height: auto; /* Ensures aspect ratio is maintained */
+        }
+
+        /* Optionally, you can add some padding around the images */
+        .gallery-img {
+            padding: 5px;
+        }
+        /* Simple, white, bold Next and Previous buttons */
+        #prevBtn, #nextBtn {
+            background-color: transparent; /* Transparent background */
+            color: white; /* White text */
+            font-weight: bold; /* Bold font */
+            border: 2px solid white; /* White border */
+            padding: 10px; /* Padding for better size */
+            border-radius: 50%; /* Circular buttons */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.3s, color 0.3s; /* Smooth hover effect */
+            width: 50px; /* Fixed size for circular button */
+            height: 50px; /* Fixed size for circular button */
+        }
+
+        /* Icon inside buttons */
+        #prevBtn i, #nextBtn i {
+            font-size: 24px; /* Adjust icon size */
+        }
+
+        /* On hover, invert the colors for a clean effect */
+        #prevBtn:hover, #nextBtn:hover {
+            background-color: white;
+            color: black;
+        }
+
+        /* Optional: Add slight shadow for a floating effect */
+        #prevBtn, #nextBtn {
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            background-color: #009CFF;
+        }
+    </style>
+
+</head>
+
+<body>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+
+/* MAGAZINE – FULL PAGE VISIBLE */
+/* Magazine body */
+.magazine-body {
+    height: calc(100vh - 56px); /* header height */
+    background: #e9e9e9;        /* light gray like demo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden !important;
+}
+
+/* PDF container */
+#pdfMagazine {
+    width: 92vw;          /* book width */
+    max-width: 1400px;    /* desktop cap */
+    height: 75vh;         /* book height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transform: translateY(-35px);
+}
+
+/* 🔥 KEY FIX: FIT PAGE INSIDE VIEWPORT */
+#pdfMagazine canvas {
+    background: #fff;
+    box-shadow:
+        0 25px 50px rgba(0,0,0,0.35),
+        0 10px 20px rgba(0,0,0,0.18);
+    border-radius: 4px;
+}
+
+/* Header */
+.modal-header {
+    background-color: #009cff;
+    color: #fff;
+    position: relative;
+    padding: 10px 15px; /* Padding for the header */
+    border-bottom: 1px solid #ddd; /* Light border */
+    display: flex; /* Enable flex layout for centering */
+    justify-content: center; /* Horizontally center title */
+    align-items: center; /* Vertically center title */
+}
+
+.modal-title {
+    margin: 0 auto;
+}
+
+/* FONT AWESOME CLOSE BUTTON */
+.fa-close-btn {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+
+    background: transparent;
+    border: none;
+    padding: 0;
+
+    font-size: 26px;
+    color: #fff7f7ff; /* RED */
+
+    cursor: pointer;
+
+    z-index: 9999; /* 🔥 ABOVE PDF ALWAYS */
+}
+
+/* Icon animation */
+.fa-close-btn i {
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+/* Hover effect */
+.fa-close-btn:hover i {
+    transform: rotate(90deg) scale(1.15);
+    opacity: 0.8;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .fa-close-btn {
+        font-size: 24px;
+        right: 12px;
+    }
+}
+
+/* Ensure header stays above canvas */
+.modal-header {
+    position: relative;
+    z-index: 9998;
+}
+
+/* Flip controls */
+.mag-controls {
+    position: absolute;
+    top: 50%;              /* vertical center */
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+    z-index: 9999;         /* always above PDF canvas */
+}
+
+.mag-arrow {
+    pointer-events: auto;
+}
+
+.mag-controls button {
+    pointer-events: auto;
+}
+
+
+/* PURE TEXT ARROWS – NO UI */
+.mag-controls {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.mag-controls {
+    z-index: 10001 !important;
+}
+
+.mag-arrow {
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+
+    /* 🔥 REMOVE EVERYTHING */
+    background: transparent !important;
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+    appearance: none !important;
+
+    /* TEXT ONLY */
+    font-size: 42px;
+    font-weight: 700;
+    color: #009cff;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.45);
+
+    cursor: pointer;
+    pointer-events: auto;
+    user-select: none;
+    line-height: 1;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* Urdu RTL */
+.mag-left { left: 18px; }   /* NEXT */
+.mag-right { right: 18px; } /* PREVIOUS */
+
+/* 🔥 When thumbnails are open */
+body.thumbs-open .mag-left {
+    left: 278px; /* thumbnail width (260) + 18px gap */
+}
+
+.mag-arrow:hover {
+    transform: translateY(-50%) scale(1.12);
+    opacity: 0.85;
+}
+
+/* Disabled = GONE */
+.mag-arrow.disabled {
+    display: none !important;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .mag-arrow {
+        font-size: 36px;
+    }
+}
+
+/* Disabled arrow state */
+.mag-arrow.disabled {
+    opacity: 0.25;
+    pointer-events: none;
+    background: rgba(0,0,0,0.25);
+}
+
+/* 🔥 FIX: hide PREV arrow before JS loads */
+#prevPage {
+    display: none;
+}
+
+/* NO MAGAZINE MODAL – NO SCROLL */
+/* Stop Bootstrap from forcing scroll */
+#noMagazineModal,
+#noMagazineModal .modal-dialog,
+#noMagazineModal .modal-content,
+#noMagazineModal .modal-body {
+    overflow: hidden !important;
+}
+
+/* Prevent body scroll when this modal is open */
+body.modal-open {
+    overflow: hidden !important;
+    height: 100vh;
+}
+
+/* PROFESSIONAL MAGAZINE TOOLBAR */
+.mag-toolbar {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(6px);
+
+    height: 44px;
+    min-width: 320px;
+    max-width: 90vw;
+
+    padding: 0 18px;
+    border-radius: 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.25);
+
+    z-index: 9999;
+}
+
+/* LEFT: Page indicator */
+.toolbar-left {
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+    white-space: nowrap;
+}
+
+/* CENTER ICON GROUP */
+.toolbar-center {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+/* ICON BUTTONS */
+.mag-toolbar button {
+    background: none;
+    border: 0;
+    padding: 6px;
+    font-size: 15px;
+    color: #444;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background .2s ease, color .2s ease;
+}
+
+.mag-toolbar button:hover {
+    background: rgba(0,0,0,0.06);
+    color: #009cff;
+}
+
+/* RIGHT MENU */
+.toolbar-right {
+    position: relative;
+}
+
+/* DROPDOWN */
+.toolbar-menu {
+    position: absolute;
+    bottom: 52px;
+    right: 0;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 14px 35px rgba(0,0,0,.25);
+    padding: 6px 0;
+    display: none;
+    flex-direction: column;
+    min-width: 220px;
+    z-index: 10000;
+}
+
+.toolbar-menu button {
+    padding: 10px 16px;
+    font-size: 14px;
+    text-align: left;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .mag-toolbar {
+        height: 40px;
+        min-width: auto;
+        padding: 0 14px;
+        gap: 12px;
+    }
+
+    .toolbar-left {
+        display: none; /* cleaner on mobile */
+    }
+
+    .mag-toolbar button {
+        font-size: 14px;
+    }
+}
+
+/* FULL PAGE MAGAZINE MODAL */
+#flipbookModal .modal-dialog {
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: 100vw !important;
+    margin: 0 !important;
+}
+
+#flipbookModal .modal-content {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0 !important;
+    border: 0;
+}
+
+#flipbookModal .modal-body {
+    padding: 0 !important;
+    height: calc(100vh - 56px); /* header height */
+    max-height: none;
+    overflow: hidden;
+}
+
+/* Hide menu items when magazine is open */
+.hide-during-magazine {
+    display: none !important;
+}
+
+/* PDF LOADING SPINNER */
+.pdf-loader {
+    position: absolute;
+    inset: 0;
+    background: rgba(233, 233, 233, 0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9997;
+}
+
+.spinner {
+    width: 46px;
+    height: 46px;
+    border: 4px solid rgba(0,0,0,0.15);
+    border-top-color: #009cff;
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+}
+
+.loader-text {
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+}
+
+@keyframes  spin {
+    to { transform: rotate(360deg); }
+}
+
+/* PDF THUMBNAILS PANEL */
+.pdf-thumbnails {
+    position: fixed;
+    top: 52px; /* below modal header */
+    left: 0;   /* 🔥 LEFT SIDE */
+    width: 260px;
+    height: calc(100% - 56px);
+
+    background: rgba(255, 255, 255, 0.97);
+    box-shadow: 6px 0 30px rgba(0,0,0,0.25);
+
+    z-index: 10000;
+
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    transition: transform 0.3s ease;
+}
+
+/* Hidden → slide out LEFT */
+.pdf-thumbnails.hidden {
+    transform: translateX(-100%);
+}
+
+.pdf-thumbnail-wrapper.active-thumbnail {
+    border: 3px solid #009cff;
+    background: rgba(0,156,255,0.08);
+    border-radius: 6px;
+}
+
+.pdf-thumbnail-wrapper canvas {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ONLY thumbnails scroll */
+.thumbnails-container {
+    flex: 1;                      /* 🔥 fills remaining height */
+    overflow-y: auto;
+    padding: 12px 10px;
+}
+
+.thumbnails-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    background: #009cff;
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.thumbnails-header button {
+    background: transparent;
+    border: 0;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.pdf-thumbnail-wrapper {
+    position: relative;
+}
+
+.pdf-thumbnail-number {
+    position: absolute;
+    bottom: 4px;
+    right: 6px;
+    background: rgba(0,0,0,0.65);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 1px 4px;
+    border-radius: 2px;
+}
+
+.thumbnails-container {
+    overflow-y: auto;
+    padding: 12px 10px;
+    scroll-behavior: smooth;
+}
+
+.pdf-thumbnail-wrapper {
+    width: 100%;
+    cursor: pointer;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.pdf-thumbnail-wrapper:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 18px rgba(0,0,0,.25);
+}
+
+
+
+</style>
+
+<div class="modal fade" id="flipbookModal" tabindex="-1">
+    <div class="modal-dialog modal-lg flipbook-modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" style="color: white;">IESCO Times</h5>
+                <button type="button"
+                        class="fa-close-btn"
+                        data-bs-dismiss="modal"
+                        aria-label="Close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <audio id="pageFlipSound" preload="auto">
+                <source src="https://iesco.com.pk/images/page-flip.mp3" type="audio/mpeg">
+            </audio>
+
+            <div class="modal-body magazine-body">
+
+            <!-- PDF Loading Spinner -->
+            <div id="pdfLoader" class="pdf-loader">
+                <div class="spinner"></div>
+                <div class="loader-text">Loading magazine…</div>
+            </div>
+
+                <div id="pdfMagazine"></div>
+
+                <div class="mag-controls">
+                    <span id="nextPage" class="mag-arrow mag-left">❮</span>
+                    <span id="prevPage" class="mag-arrow mag-right">❯</span>
+                </div>
+
+                <!-- PDF Thumbnails Panel -->
+                <div id="pdfThumbnails" class="pdf-thumbnails hidden">
+                    <div class="thumbnails-header">
+                        <span>Thumbnails</span>
+                        <button id="closeThumbs"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                    <div class="thumbnails-container"></div>
+                </div>
+
+                <!-- TOOLBAR -->
+                <div class="mag-toolbar">
+
+                    <div class="toolbar-left">
+                        <span id="pageIndicator">1 / 1</span>
+                    </div>
+
+                    <div class="toolbar-center">
+                        <button id="thumbsBtn" title="Thumbnails">
+                            <i class="fa-solid fa-border-all"></i>
+                        </button>
+
+                        <button id="zoomIn" title="Zoom In">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+
+                        <button id="zoomOut" title="Zoom Out">
+                            <i class="fa-solid fa-minus"></i>
+                        </button>
+
+                        <button id="fullscreenBtn" title="Fullscreen">
+                            <i class="fa-solid fa-expand"></i>
+                        </button>
+
+                        <button id="shareBtn" title="Share">
+                            <i class="fa-solid fa-share-nodes"></i>
+                        </button>
+                    </div>
+
+                    <div class="toolbar-right">
+                        <button id="moreBtn">
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </button>
+
+                        <!-- DROPDOWN -->
+                        <div class="toolbar-menu" id="toolbarMenu">
+                            <button id="downloadPdf">
+                                <i class="fa-solid fa-download"></i> Download PDF File
+                            </button>
+                            <button id="singlePageMode">
+                                <i class="fa-solid fa-file"></i> Single Page Mode
+                            </button>
+                            <button id="firstPage">
+                                <i class="fa-solid fa-backward"></i> Goto First Page
+                            </button>
+                            <button id="lastPage">
+                                <i class="fa-solid fa-forward"></i> Goto Last Page
+                            </button>
+                            <button id="toggleSound">
+                                <i class="fa-solid fa-volume-high"></i> Turn on/off Sound
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Extra No Magazine available Pop-up -->
+<div class="modal fade" id="noMagazineModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+
+            <div class="modal-header bg-light">
+                <h5 class="modal-title">
+                    <i class="fas fa-circle-info text-primary me-2"></i>
+                    Magazine Unavailable
+                </h5>
+                <button type="button"
+                        class="fa-close-btn text-primary"
+                        data-bs-dismiss="modal"
+                        aria-label="Close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="modal-body text-center">
+                <p class="mb-0">
+                    The latest magazine is not available right now.<br>
+                    Please check back later.
+                </p>
+            </div>
+
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-primary px-4" data-bs-dismiss="modal">
+                    OK
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+"https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+</script>
+
+<script>
+let GLOBAL_HEIGHT_SCALE = null;
+let thumbnailsGenerated = false;
+let CURRENT_PDF_URL = null;
+const isRTL = true; // ✅ true for Urdu, false for English
+
+
+let isSinglePage = false;
+let soundEnabled = true;
+let zoomLevel = 1;
+
+const SCALE_MAX = 2.2;
+let fitScale = null;
+let singlePageFitScale = null;
+let scale = 1.0;
+let pdfDoc = null;
+let currentPage = 1;
+let totalPages = 0;
+// Audio.....
+let audioUnlocked = false;
+// Audio Unlock....
+function unlockAudio() {
+    if (audioUnlocked) return;
+
+    const audio = document.getElementById('pageFlipSound');
+    if (!audio) return;
+
+    audio.muted = true;
+    audio.play().then(() => {
+        audio.pause();
+        audio.currentTime = 0;
+        audio.muted = false;
+        audioUnlocked = true;
+    }).catch(() => {});
+}
+
+['click', 'keydown', 'touchstart'].forEach(evt => {
+    document.addEventListener(evt, unlockAudio, { once: true });
+});
+
+
+/* Zoom-In Functionality */
+document.getElementById('zoomIn').addEventListener('click', () => {
+    if (GLOBAL_HEIGHT_SCALE < SCALE_MAX) {
+        GLOBAL_HEIGHT_SCALE += 0.1;
+        renderPage(currentPage);
+    }
+});
+
+/* Zoom-Out Functionality */
+document.getElementById('zoomOut').addEventListener('click', () => {
+    if (GLOBAL_HEIGHT_SCALE > 0.6) {
+        GLOBAL_HEIGHT_SCALE -= 0.1;
+        renderPage(currentPage);
+    }
+});
+
+/* Full Screen View */
+document.getElementById('fullscreenBtn').addEventListener('click', () => {
+    const modal = document.getElementById('flipbookModal');
+
+    if (!document.fullscreenElement) {
+        modal.requestFullscreen().catch(err => console.log(err));
+    } else {
+        document.exitFullscreen();
+    }
+});
+
+/* Share Functionality */
+document.getElementById('shareBtn').addEventListener('click', () => {
+
+    if (!CURRENT_PDF_URL) {
+        alert('Magazine not loaded yet');
+        return;
+    }
+
+    // Absolute URL (important)
+    const shareUrl = new URL(CURRENT_PDF_URL, window.location.origin).href;
+
+    if (navigator.share) {
+        navigator.share({
+            title: 'IESCO Times Magazine',
+            text: 'Read the latest issue of IESCO Times',
+            url: shareUrl
+        });
+    } else {
+        navigator.clipboard.writeText(shareUrl);
+        alert('Magazine link copied to clipboard');
+    }
+});
+
+/* Tool bar menu (three dots menu) */
+const moreBtn = document.getElementById('moreBtn');
+const toolbarMenu = document.getElementById('toolbarMenu');
+
+moreBtn.addEventListener('click', () => {
+    toolbarMenu.style.display =
+        toolbarMenu.style.display === 'flex' ? 'none' : 'flex';
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', e => {
+    if (!moreBtn.contains(e.target) && !toolbarMenu.contains(e.target)) {
+        toolbarMenu.style.display = 'none';
+    }
+});
+
+/* Download Pdf Functionality */
+document.getElementById('downloadPdf').addEventListener('click', () => {
+    if (!CURRENT_PDF_URL) return;
+
+    const link = document.createElement('a');
+    link.href = CURRENT_PDF_URL;
+    link.download = 'IESCO-Times.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+});
+
+/* Single Page Functionality */
+document.getElementById('singlePageMode').addEventListener('click', () => {
+    isSinglePage = !isSinglePage;
+    renderPage(currentPage);
+});
+
+/* Move to First Page Functionality */
+document.getElementById('firstPage').addEventListener('click', () => {
+    currentPage = 1;
+    renderPage(currentPage);
+});
+
+/* Move to Last Page Functionality */
+document.getElementById('lastPage').addEventListener('click', () => {
+    currentPage = totalPages;
+    renderPage(currentPage);
+});
+
+const closeBtn = document.querySelector('.fa-close-btn');
+
+closeBtn.addEventListener('click', () => {
+
+    // Hide thumbnails panel
+    hideThumbnails();
+
+});
+
+// Show Loader Function
+function showLoader() {
+    const loader = document.getElementById('pdfLoader');
+    loader.style.display = 'flex';
+    loader.style.opacity = '1';
+}
+
+// Hide Loader Function
+function hideLoader() {
+    const loader = document.getElementById('pdfLoader');
+    loader.style.opacity = '0';
+    setTimeout(() => loader.style.display = 'none', 200);
+}
+
+// Play Sound Function
+function playFlipSound() {
+    if (!soundEnabled) return;
+
+    const audio = document.getElementById('pageFlipSound');
+    if (!audio) return;
+
+    audio.currentTime = 0;
+    audio.play().catch(() => {
+        // Browser blocked (safe ignore)
+    });
+}
+
+/* FIT CALCULATION Function */
+function calculateFitByHeight(container, pageViewport) {
+    return Math.min(
+        (container.clientHeight * 0.95) / pageViewport.height,
+        SCALE_MAX
+    );
+}
+
+function getHeightFitScale(container, page) {
+    const baseViewport = page.getViewport({ scale: 1 });
+
+    return Math.min(
+        (container.clientHeight * 0.95) / baseViewport.height,
+        SCALE_MAX
+    );
+}
+
+function renderPage(pageNum) {
+
+
+    showLoader();
+    const container = document.getElementById('pdfMagazine');
+    container.innerHTML = '';
+
+    if (isSinglePage) {
+    renderSinglePage(pageNum);
+    updateArrowState();
+    updatePageIndicator();
+    updateActiveThumbnail();
+    return;
+    }
+
+    // COVER PAGE (single)
+    if (pageNum === 1) {
+        renderSinglePage(1);
+        updateArrowState();
+        updatePageIndicator();
+        updateActiveThumbnail();
+        return;
+    }
+
+    // FORCE LEFT PAGE ALIGNMENT
+    if (pageNum % 2 !== 0) {
+        pageNum -= 1;
+        currentPage = pageNum;
+    }
+
+    // LAST PAGE ALONE (ODD TOTAL)
+    if (pageNum === totalPages) {
+        renderSinglePage(pageNum);
+        updateArrowState();
+        updatePageIndicator();
+        updateActiveThumbnail();
+        return;
+    }
+
+    // NORMAL SPREAD
+    let leftPage, rightPage;
+
+    if (isRTL) {
+        rightPage = currentPage;
+        leftPage = Math.min(currentPage + 1, totalPages);
+    } else {
+        leftPage = currentPage;
+        rightPage = Math.min(currentPage + 1, totalPages);
+    }
+
+    renderTwoPages(leftPage, rightPage);
+    updateArrowState();
+    updatePageIndicator();
+    updateActiveThumbnail();
+}
+
+function renderSinglePage(pageNum) {
+    pdfDoc.getPage(pageNum).then(page => {
+
+        const container = document.getElementById('pdfMagazine');
+        container.innerHTML = '';
+        container.style.display = 'flex';
+        container.style.justifyContent = 'center';
+        container.style.alignItems = 'center';
+
+        if (!GLOBAL_HEIGHT_SCALE) {
+            GLOBAL_HEIGHT_SCALE = getHeightFitScale(container, page);
+        }
+
+        const viewport = page.getViewport({
+            scale: GLOBAL_HEIGHT_SCALE
+        });
+
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+
+        container.appendChild(canvas);
+
+        const renderTask = page.render({ canvasContext: ctx, viewport });
+
+        renderTask.promise.then(() => {
+            hideLoader();            // hide AFTER render
+            updatePageIndicator();
+        });
+
+    });
+}
+
+function renderTwoPages(leftPageNum, rightPageNum) {
+
+    const container = document.getElementById('pdfMagazine');
+    container.innerHTML = '';
+    container.style.display = 'flex';
+    container.style.gap = '18px';
+    container.style.alignItems = 'center';
+    container.style.justifyContent = 'center';
+
+    Promise.all([
+        pdfDoc.getPage(leftPageNum),
+        rightPageNum ? pdfDoc.getPage(rightPageNum) : null
+    ]).then(pages => {
+
+        const renderTasks = [];
+
+        pages.forEach(page => {
+            if (!page) return;
+
+            const viewport = page.getViewport({
+                scale: GLOBAL_HEIGHT_SCALE
+            });
+
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+
+            container.appendChild(canvas);
+
+            const task = page.render({ canvasContext: ctx, viewport });
+            renderTasks.push(task.promise);
+        });
+
+        // WAIT FOR BOTH PAGES
+        Promise.all(renderTasks).then(() => {
+            hideLoader();
+            updatePageIndicator();
+        });
+    });
+
+}
+
+function updateArrowState() {
+
+    const nextBtn = document.getElementById('nextPage');
+    const prevBtn = document.getElementById('prevPage');
+
+    if (isSinglePage) {
+        prevBtn.style.display = currentPage === 1 ? 'none' : 'flex';
+        nextBtn.style.display = currentPage === totalPages ? 'none' : 'flex';
+        return;
+    }
+
+    // EXISTING SPREAD LOGIC BELOW
+    prevBtn.style.display = currentPage === 1 ? 'none' : 'flex';
+
+    if (
+        currentPage === totalPages ||
+        (currentPage + 1 >= totalPages && totalPages % 2 === 0)
+    ) {
+        nextBtn.style.display = 'none';
+    } else {
+        nextBtn.style.display = 'flex';
+    }
+}
+
+function goNextPage() {
+    // ❌ STOP at last page
+    if (isSinglePage && currentPage >= totalPages) return;
+    if (!isSinglePage && currentPage + 1 >= totalPages) return;
+    playFlipSound();
+
+    if (isSinglePage) {
+        if (currentPage < totalPages) {
+            currentPage += 1;
+        }
+    } else {
+        if (currentPage === 1) {
+            currentPage = 2;
+        } else if (currentPage + 2 <= totalPages) {
+            currentPage += 2;
+        }
+    }
+    renderPage(currentPage);
+}
+
+function goPrevPage() {
+    // ❌ STOP at first page
+    if (currentPage <= 1) return;
+    playFlipSound();
+
+    if (isSinglePage) {
+        if (currentPage > 1) {
+            currentPage -= 1;
+        }
+    } else {
+        if (currentPage > 2) {
+            currentPage -= 2;
+        } else {
+            currentPage = 1;
+        }
+    }
+    renderPage(currentPage);
+}
+
+function updatePageIndicator() {
+    const indicator = document.getElementById('pageIndicator');
+    if (!indicator) return;
+
+    /* SINGLE PAGE */
+    if (isSinglePage) {
+        indicator.textContent = `${currentPage} / ${totalPages}`;
+        return;
+    }
+
+    /* COVER */
+    if (currentPage === 1) {
+        indicator.textContent = `1 / ${totalPages}`;
+        return;
+    }
+
+    let first, second;
+
+    if (isRTL) {
+        first = Math.min(currentPage + 1, totalPages);
+        second = currentPage;
+    } else {
+        first = currentPage;
+        second = Math.min(currentPage + 1, totalPages);
+    }
+
+    indicator.textContent = `${first}–${second} / ${totalPages}`;
+}
+
+
+function loadMagazine(pdfUrl, onReady) {
+    CURRENT_PDF_URL = pdfUrl;
+    fitScale = null;
+    scale = 1.0;
+    showLoader();
+
+    pdfjsLib.getDocument(pdfUrl).promise.then(pdf => {
+        pdfDoc = pdf;
+        totalPages = pdf.numPages;
+        currentPage = 1;
+        onReady(); // render ONLY when ready
+    });
+}
+
+</script>
+
+<script>
+function animateFlip(direction, callback) {
+    const canvas = document.querySelector('#pdfMagazine canvas');
+    if (!canvas) return callback();
+
+    canvas.style.transform = `translateX(${direction === 'next' ? '-40px' : '40px'})`;
+    canvas.style.opacity = '0';
+
+    setTimeout(() => {
+        callback();
+        setTimeout(() => {
+            const newCanvas = document.querySelector('#pdfMagazine canvas');
+            if (newCanvas) {
+                newCanvas.style.transform = 'translateX(0)';
+                newCanvas.style.opacity = '1';
+            }
+        }, 30);
+    }, 200);
+}
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+const flipbookModal = document.getElementById('flipbookModal');
+
+    const btn = document.getElementById('openFlipbookLink');
+
+    /* CLICK PAGE CHANGE (LEFT / RIGHT) */
+
+    const pdfContainer = document.getElementById('pdfMagazine');
+
+    pdfContainer.addEventListener('click', function (e) {
+
+        // Ignore clicks on toolbar / arrows / thumbnails
+        if (
+            e.target.closest('.mag-toolbar') ||
+            e.target.closest('.mag-controls') ||
+            e.target.closest('.pdf-thumbnails')
+        ) return;
+
+        const rect = pdfContainer.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        const width = rect.width;
+
+        // LEFT SIDE → PREVIOUS
+        if (clickX < width / 2) {
+            goNextPage();
+        }
+        // RIGHT SIDE → NEXT
+        else {
+            goPrevPage();
+        }
+    });
+
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+
+                            const pdfUrl = "https://iesco.com.pk/storage/iesco-times/May2026/FjRFYG1YriuKiJOT8Mn4.pdf?v=" + Date.now();
+            loadMagazine(pdfUrl, () => {
+                const modalEl = document.getElementById('flipbookModal');
+                const modal = new bootstrap.Modal(modalEl);
+
+                modalEl.addEventListener('shown.bs.modal', () => {
+                    renderPage(1);
+                    updateArrowState();
+                    updatePageIndicator();
+                }, { once: true });
+
+                modal.show();
+            });
+
+                        });
+
+document.getElementById('nextPage').onclick = () => {
+    goNextPage();
+};
+
+document.getElementById('prevPage').onclick = () => {
+    goPrevPage();
+};
+
+document.addEventListener('keydown', (e) => {
+
+    // Ignore typing
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+    // RIGHT → NEXT
+    if (e.key === 'ArrowRight') {
+        goPrevPage(); // sound
+    }
+
+    // LEFT → PREV
+    if (e.key === 'ArrowLeft') {
+        goNextPage(); // sound
+    }
+
+    // ESC → CLOSE MODAL
+    if (e.key === 'Escape') {
+        const modalEl = document.getElementById('flipbookModal');
+        bootstrap.Modal.getInstance(modalEl)?.hide();
+    }
+
+    // F → FULLSCREEN
+    if (e.key.toLowerCase() === 'f') {
+        document.getElementById('fullscreenBtn')?.click();
+    }
+});
+
+/* TOGGLE PAGE FLIP SOUND  */
+document.getElementById('toggleSound').addEventListener('click', () => {
+
+    soundEnabled = !soundEnabled;
+
+    const icon = document.querySelector('#toggleSound i');
+
+    if (soundEnabled) {
+        icon.classList.remove('fa-volume-xmark');
+        icon.classList.add('fa-volume-high');
+    } else {
+        icon.classList.remove('fa-volume-high');
+        icon.classList.add('fa-volume-xmark');
+    }
+});
+
+document.getElementById('flipbookModal')
+    .addEventListener('hidden.bs.modal', function () {
+        history.pushState(null, '', window.location.pathname);
+    });
+
+});
+</script>
+
+
+<!-- Hide E-katchery, news-btn, careers-btn when magazine is open -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    const flipbookModal = document.getElementById('flipbookModal');
+
+    const hideItems = [
+        document.getElementById('e-katchery'),
+        document.getElementById('news-btn'),
+        document.getElementById('careers-btn')
+    ];
+
+    flipbookModal.addEventListener('shown.bs.modal', function () {
+        hideItems.forEach(el => el?.classList.add('hide-during-magazine'));
+    });
+
+    flipbookModal.addEventListener('hidden.bs.modal', function () {
+        hideItems.forEach(el => el?.classList.remove('hide-during-magazine'));
+    });
+
+});
+
+
+
+// Thumbnails Functionality...
+const thumbsBtn = document.getElementById('thumbsBtn');
+const pdfThumbnails = document.getElementById('pdfThumbnails');
+const thumbnailsContainer = pdfThumbnails.querySelector('.thumbnails-container');
+const closeThumbsBtn = document.getElementById('closeThumbs');
+
+async function generateThumbnails() {
+    if (thumbnailsGenerated) return;
+    thumbnailsGenerated = true;
+
+    thumbnailsContainer.innerHTML = '';
+
+    const THUMB_WIDTH = 120;
+
+    for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
+
+        const page = await pdfDoc.getPage(pageNum);
+
+        const baseViewport = page.getViewport({ scale: 1 });
+        const scale = THUMB_WIDTH / baseViewport.width;
+        const viewport = page.getViewport({ scale });
+
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+
+        const wrapper = document.createElement('div');
+        wrapper.className = 'pdf-thumbnail-wrapper';
+        wrapper.dataset.page = pageNum;
+
+        await page.render({ canvasContext: ctx, viewport }).promise;
+
+        wrapper.appendChild(canvas);
+
+        const label = document.createElement('div');
+        label.className = 'pdf-thumbnail-number';
+        label.textContent = pageNum;
+        wrapper.appendChild(label);
+
+        wrapper.addEventListener('click', () => {
+
+            if (isSinglePage) {
+                currentPage = pageNum;
+            } else {
+                if (pageNum === 1) {
+                    currentPage = 1;
+                }
+                else if (pageNum === totalPages && totalPages % 2 !== 0) {
+                    currentPage = totalPages;
+                }
+                else {
+                    currentPage = pageNum % 2 === 0 ? pageNum : pageNum - 1;
+                }
+            }
+
+            playFlipSound();          // 🔊 SOUND ADDED
+            renderPage(currentPage);
+            updateActiveThumbnail();
+        });
+
+
+        thumbnailsContainer.appendChild(wrapper);
+        updateActiveThumbnail();
+    }
+}
+
+function updateActiveThumbnail() {
+    document.querySelectorAll('.pdf-thumbnail-wrapper').forEach(el => {
+        el.classList.remove('active-thumbnail');
+
+        const page = parseInt(el.dataset.page);
+
+        /* SINGLE PAGE MODE → highlight ONLY current page */
+        if (isSinglePage) {
+            if (page === currentPage) {
+                el.classList.add('active-thumbnail');
+            }
+            return;
+        }
+
+        /* DOUBLE PAGE MODE */
+        if (
+            currentPage === 1 && page === 1 ||
+            currentPage !== 1 && (page === currentPage || page === currentPage + 1)
+        ) {
+            el.classList.add('active-thumbnail');
+        }
+    });
+}
+
+function showThumbnails() {
+    pdfThumbnails.classList.remove('hidden');
+    document.body.classList.add('thumbs-open'); // move arrow
+}
+
+function hideThumbnails() {
+    pdfThumbnails.classList.add('hidden');
+    document.body.classList.remove('thumbs-open'); // reset arrow
+}
+
+// BUTTON EVENTS
+thumbsBtn.addEventListener('click', () => {
+
+    if (!thumbnailsGenerated) {
+        generateThumbnails();
+    }
+
+    // TOGGLE
+    if (pdfThumbnails.classList.contains('hidden')) {
+        showThumbnails();
+    } else {
+        hideThumbnails();
+    }
+});
+
+closeThumbsBtn.addEventListener('click', hideThumbnails);
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <style>
+    /* General modal fade-in animation */
+    .modal.fade {
+        display: block;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(-100%);
+        transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .modal.show {
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+    }
+
+    /* Modal dialog styles */
+    .modal-dialog {
+        max-width: 60%; /* Adjust width of modal */
+        width: 60%;
+        margin: 30px auto; /* Center the modal */
+    }
+
+    /* Modal header styling */
+    .news-modal .modal-header {
+        background-color: #009cff; /* Blue background */
+        color: #fff; /* White text */
+        padding: 10px 15px; /* Padding for the header */
+        border-bottom: 1px solid #ddd; /* Light border */
+        display: flex; /* Enable flex layout for centering */
+        justify-content: center; /* Horizontally center title */
+        align-items: center; /* Vertically center title */
+        position: relative;
+    }
+
+    .news-modal .modal-header .modal-title {
+        font-size: 1.2rem; /* Adjust title size */
+        font-weight: bold;
+        color: #fff;
+        margin: 0; /* Remove default margin */
+    }
+
+    .news-modal .modal-header .close {
+        position: absolute;
+        right: 15px; /* Place close button on the right */
+        top: 50%; /* Vertically center */
+        transform: translateY(-50%);
+        font-size: 1.5rem;
+        color: #fff; /* White close button */
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    /* Modal body styling */
+    .modal-body {
+        padding: 20px; /* Add padding for content */
+        max-height: 70vh; /* Limit the body height */
+        overflow-y: auto; /* Enable scrolling if content overflows */
+    }
+
+    /* News list styles */
+    #news-list {
+        list-style-type: none; /* Remove default bullets */
+        padding-left: 0; /* Remove left padding */
+    }
+
+    #news-list li {
+        margin: 10px 0; /* Add space between list items */
+        display: flex;
+        align-items: center; /* Align icon and text */
+    }
+
+    #news-list li i {
+        margin-right: 10px; /* Add space between icon and text */
+    }
+
+    .news-separator {
+        border: 0;
+        border-top: 1px solid rgba(0, 123, 255, 0.2); /* Light blue border */
+        margin: 10px 0; /* Space around the separator */
+    }
+
+    /* Media query for smaller screens */
+    @media (max-width: 576px) {
+        .modal-dialog {
+            max-width: 95%; /* Adjust modal width for smaller screens */
+            width: 95%;
+        }
+
+        .modal-body {
+            max-height: 60vh; /* Limit body height on smaller screens */
+        }
+
+        .news-modal .modal-header {
+            padding: 5px 10px; /* Reduce padding */
+            font-size: smaller;
+        }
+
+        .news-modal .modal-title {
+            font-size: 1rem; /* Smaller title size */
+        }
+    }
+</style>
+
+<div id="news-modal" class="modal fade news-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Latest News</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <ul id="news-list">
+                                            <li>
+                            <i class="fas fa-bullhorn"></i>
+                            <a class="model-item-title" href="https://iesco.com.pk/storage/news/September2025/2ttIpE3gDpVRrnEUhLTx.docx" target="_blank">
+                                Standard Letter Head for IESCO
+                            </a>
+                        </li>
+                        <hr class="news-separator">
+                                            <li>
+                            <i class="fas fa-bullhorn"></i>
+                            <a class="model-item-title" href="https://iesco.com.pk/storage/news/September2025/cjgg20521tPvRpVIt3J9.docx" target="_blank">
+                                Standard Visiting Card for IESCO
+                            </a>
+                        </li>
+                        <hr class="news-separator">
+                                            <li>
+                            <i class="fas fa-bullhorn"></i>
+                            <a class="model-item-title" href="https://iesco.com.pk/pension-cell" target="_blank">
+                                Documents Checklist for Pensioners
+                            </a>
+                        </li>
+                        <hr class="news-separator">
+                                            <li>
+                            <i class="fas fa-bullhorn"></i>
+                            <a class="model-item-title" href="https://iesco.com.pk/storage/news/September2025/CR4DrC7j4GHSFVHoHX5V.jpeg" target="_blank">
+                                Nomination of Focal Person for Public Information Officer (PIO) and Pakistan Information Commission (PIC)
+                            </a>
+                        </li>
+                        <hr class="news-separator">
+                                            <li>
+                            <i class="fas fa-bullhorn"></i>
+                            <a class="model-item-title" href="https://iesco.com.pk/storage/news/September2025/Siwk4oR5BDg7Y3sDOO0O.pdf" target="_blank">
+                                Deployement of NEPRA CSR Data Portal
+                            </a>
+                        </li>
+                        <hr class="news-separator">
+                                            <li>
+                            <i class="fas fa-bullhorn"></i>
+                            <a class="model-item-title" href="https://iesco.com.pk/load-shedding" target="_blank">
+                                IESCO Load Shedding Schedule
+                            </a>
+                        </li>
+                        <hr class="news-separator">
+                                            <li>
+                            <i class="fas fa-bullhorn"></i>
+                            <a class="model-item-title" href="https://iesco.com.pk/storage/news/September2025/jy4mZJmxq8ikdVC1ZCy7.pdf" target="_blank">
+                                Focal Persons for Wafaqi Mohtasib
+                            </a>
+                        </li>
+                        <hr class="news-separator">
+                                            <li>
+                            <i class="fas fa-bullhorn"></i>
+                            <a class="model-item-title" href="https://iesco.com.pk/financial-reports" target="_blank">
+                                IESCO Financial Report
+                            </a>
+                        </li>
+                        <hr class="news-separator">
+                                            <li>
+                            <i class="fas fa-bullhorn"></i>
+                            <a class="model-item-title" href="https://iesco.com.pk/storage/news/September2025/7R13px9GOvSuUpgntQ5K.pdf" target="_blank">
+                                New Connection and other Procedures
+                            </a>
+                        </li>
+                        <hr class="news-separator">
+                                            <li>
+                            <i class="fas fa-bullhorn"></i>
+                            <a class="model-item-title" href="https://iesco.com.pk/storage/news/September2025/r9XBxPUTH1qAyxWF0MH4.pdf" target="_blank">
+                                How to Verify HR Master Data
+                            </a>
+                        </li>
+                        <hr class="news-separator">
+                                            <li>
+                            <i class="fas fa-bullhorn"></i>
+                            <a class="model-item-title" href="https://iesco.com.pk/storage/news/September2025/ehfuJKOj4EYWPMYMbOZq.pdf" target="_blank">
+                                IESCO Deputation Policy
+                            </a>
+                        </li>
+                        <hr class="news-separator">
+                                            <li>
+                            <i class="fas fa-bullhorn"></i>
+                            <a class="model-item-title" href="https://iesco.com.pk/storage/news\November2024\7VMCadv6KR8oNMnAaLXQ.pdf" target="_blank">
+                                List Of Shortlisted Candidates Called For Written Test Against Advertised Posts Under Project Implementation Unit (PIU/AMI) In IESCO On (16 November, 2024)
+                            </a>
+                        </li>
+                        <hr class="news-separator">
+                                            <li>
+                            <i class="fas fa-bullhorn"></i>
+                            <a class="model-item-title" href="https://iesco.com.pk/storage/news\November2024\NK9H9QqQMwST5SfSS58X.pdf" target="_blank">
+                                Re-Schedule Notification For Written Test Against Advertised Posts Under Project Implementation Unit (PIU/AMI) In IESCO
+                            </a>
+                        </li>
+                        <hr class="news-separator">
+                                    </ul>
+            </div>
+        </div>
+    </div>
+</div>
+    <style>
+    /* Styles for the ekatchery-modal only */
+    #ekatchery-modal.modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1050;
+        display: none;
+        overflow: hidden; /* Prevent body scroll */
+    }
+
+    #ekatchery-modal.modal.show {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Style for the modal dialog specific to ekatchery-modal */
+    #ekatchery-modal .modal-dialog {
+        max-width: 50%;
+        width: auto;
+        margin: 0 auto;
+        position: relative;
+        max-height: 90vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Modal content */
+    #ekatchery-modal .modal-content {
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+        width: auto;
+        min-width: 300px;
+        max-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Modal header styling */
+    #ekatchery-modal .modal-header {
+        background-color: #009cff;
+        color: #fff;
+        border-bottom: 1px solid #ddd;
+        width: 100%;
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        padding: 15px 50px 15px 20px; /* Added right padding for close button */
+        flex-shrink: 0;
+    }
+
+    #ekatchery-modal .modal-header .btn-close {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #fff;
+        font-size: 1.8rem;
+        font-weight: bold;
+        padding: 0;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+    }
+
+    #ekatchery-modal .modal-header .btn-close:hover {
+        opacity: 1;
+    }
+
+    /* Modal body styling */
+    #ekatchery-modal .modal-body {
+        text-align: center;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px;
+        flex: 1;
+        max-height: calc(90vh - 80px); /* Subtract header height */
+    }
+
+    /* Image styling */
+    #ekatchery-modal .modal-body img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        display: block;
+        border-radius: 5px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        width: auto;
+        height: auto;
+    }
+
+    /* Prevent body scroll when modal is open */
+    body.modal-open {
+        overflow: hidden;
+        padding-right: 0 !important;
+    }
+
+    /* Media query for smaller devices */
+    @media (max-width: 768px) {
+        #ekatchery-modal .modal-dialog {
+            max-width: 90%;
+            width: auto;
+            margin: 10px auto;
+        }
+
+        #ekatchery-modal .modal-content {
+            max-height: 85vh;
+        }
+
+        #ekatchery-modal .modal-body {
+            max-height: calc(85vh - 70px);
+            padding: 15px;
+        }
+
+        #ekatchery-modal .modal-header {
+            padding: 10px 15px;
+            font-size: 1rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        #ekatchery-modal .modal-dialog {
+            max-width: 95%;
+            width: auto;
+        }
+
+        #ekatchery-modal .modal-content {
+            max-height: 80vh;
+        }
+
+        #ekatchery-modal .modal-body {
+            max-height: calc(80vh - 60px);
+            padding: 10px;
+        }
+
+        #ekatchery-modal .modal-header {
+            padding: 8px 12px;
+            font-size: 0.9rem;
+        }
+
+        #ekatchery-modal .modal-body img {
+            max-height: 100%;
+        }
+    }
+</style>
+
+<div id="ekatchery-modal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                Announcement
+                <button type="button" class="btn-close" data-bs-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Display the image dynamically -->
+                                                        
+                                                        <img src="https://iesco.com.pk/storage/e-kacheries/July2026/dYdxsdnmm4WZAZSFpvIc.jpeg" alt="Announcement">
+                                                                   </div>
+        </div>
+    </div>
+</div>
+    <style>
+    /* Careers Modal Styling */
+    .careers-modal .modal-header {
+        background-color: #009cff; /* Blue background */
+        color: #fff; /* White text */
+        padding: 12px;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        text-align: center;
+        justify-content: center; /* Center header title */
+    }
+  
+    .careers-modal .modal-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: white;
+        margin: 0 auto; /* Center the title */
+        flex-grow: 1;
+        text-align: center;
+    }
+  
+    .careers-modal .close {
+        position: absolute;
+        right: 15px;
+        top: 10px;
+        color: #fff;
+        font-size: 1.5rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+  
+    /* Table Styling */
+    .careers-modal .table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+  
+    .careers-modal .table th {
+        background-color: #f8f9fa;
+        color: #333;
+        font-weight: bold;
+        padding: 10px;
+        text-align: center;
+    }
+  
+    .careers-modal .table td {
+        padding: 10px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+  
+    .careers-modal .table .text-start {
+        text-align: left;
+    }
+  
+    /* Button Styles */
+    .careers-modal .btn-link {
+        color: #007bff;
+        font-weight: bold;
+        padding: 5px 10px;
+        text-decoration: none;
+        border-radius: 4px;
+        display: inline-block;
+    }
+  
+    .careers-modal .btn-link:hover {
+        background-color: #e9f5ff;
+        text-decoration: none;
+    }
+  
+    /* No Openings Message */
+    .careers-modal .no-openings {
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: #666;
+        padding: 20px;
+    }
+  
+    /* Responsive Adjustments */
+    @media (max-width: 576px) {
+        .careers-modal .modal-dialog {
+            max-width: 95%;
+        }
+  
+        .careers-modal .table th,
+        .careers-modal .table td {
+            font-size: 14px;
+        }
+  
+        .careers-modal .btn-link {
+            font-size: 12px;
+            padding: 4px 8px;
+        }
+    }
+  </style>
+  
+  <div id="careers-modal" class="modal fade careers-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Careers</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                                    <p class="no-openings">No Jobs available at the moment.</p>
+                            </div>
+        </div>
+    </div>
+  </div>
+  
+    
+    <nav class="navbar navbar-expand-lg sticky-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
+    <!-- IESCO Logo -->
+    <a href="https://iesco.com.pk" class="navbar-brand">
+        <img src="https://iesco.com.pk/images/iesco1.png" alt="IESCO Logo" style="height: 50px;">
+    </a>
+
+    
+    
+    
+    <button type="button" class="navbar-toggler me-3 d-lg-none" id="toggleSidebar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Main Navbar (Desktop View) -->
+    <div class="collapse navbar-collapse d-none d-lg-flex" id="navbarCollapse" style="margin-left: 20px;">
+        <div class="navbar-nav me-auto p-3 p-lg-0">
+            
+            <!-- Parent Menu Items (Dropdowns + Single Links) -->
+                                                <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            About Us                        </a>
+                        <div class="dropdown-menu border-0 rounded-0 rounded-bottom m-0">
+                                                                                                <a href="https://iesco.com.pk/about-us" class="dropdown-item">
+                                        History                                    </a>
+                                                                                                                                <a href="https://iesco.com.pk/iesco-bods" class="dropdown-item">
+                                        Board Of Directors                                    </a>
+                                                                                                                                <a href="https://iesco.com.pk/iesco-organization" class="dropdown-item">
+                                        Management                                    </a>
+                                                                                                                                <a href="https://iesco.com.pk/iesco-consumers" class="dropdown-item">
+                                        Consumer Profile                                    </a>
+                                                                                                                                <a href="https://iesco.com.pk/iesco-organogram" class="dropdown-item">
+                                        IESCO Organogram                                    </a>
+                                                                                    </div>
+                    </div>
+                                                                <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            Consumer Service                        </a>
+                        <div class="dropdown-menu border-0 rounded-0 rounded-bottom m-0">
+                                                                                                <a href="https://bill.pitc.com.pk/iescobill" class="dropdown-item">
+                                        Get IESCO Duplicate Bill                                    </a>
+                                                                                                                                <a href="https://iesco.com.pk/tariff-guide" class="dropdown-item">
+                                        Tariff Guide                                    </a>
+                                                                                                                                <a href="https://iesco.com.pk/customer-centers" class="dropdown-item">
+                                        Customer Care Centers                                    </a>
+                                                                                                                                <a href="https://iesco.com.pk/storage/CSM.pdf" class="dropdown-item">
+                                        Consumer Service Manual                                    </a>
+                                                                                                                                <a href="https://iesco.com.pk/report-contractors" class="dropdown-item">
+                                        Test Report Contractors                                    </a>
+                                                                                                                                <a href="https://iesco.com.pk/performance-reports" class="dropdown-item">
+                                        Daily Monthly Quartly Reports                                    </a>
+                                                                                    </div>
+                    </div>
+                                                                <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            Departments                        </a>
+                        <div class="dropdown-menu border-0 rounded-0 rounded-bottom m-0">
+                                                                                                <a href="https://ibs.pitc.com.pk/dashboard/user/auth/sign-in" class="dropdown-item">
+                                        MIS Reports                                    </a>
+                                                                                                                                <a href="http://dashboard.pitc.com.pk:8080/ords/f?p=113:101" class="dropdown-item">
+                                        IESCO Dashboard                                    </a>
+                                                                                                                                <a href="https://iesco.com.pk/regional-training-centers" class="dropdown-item">
+                                        Regional Training Center                                    </a>
+                                                                                                                                <a href="https://iesco.com.pk/pmu" class="dropdown-item">
+                                        Project Management Unit                                    </a>
+                                                                                                                                <a href="https://iesco.com.pk/search-reference-number" class="dropdown-item">
+                                        Search Reference Number                                    </a>
+                                                                                                                                <a href="https://iesco.com.pk/pension-cell" class="dropdown-item">
+                                        Pension Cell                                    </a>
+                                                                                                                                <a href="https://iesco.com.pk/financial-reports" class="dropdown-item">
+                                        Financial Reports                                    </a>
+                                                                                                                                <a href="https://iesco.com.pk/storage/IESCOLegalStatus.pdf" class="dropdown-item">
+                                        IESCO Legal Status                                    </a>
+                                                                                                                                <a href="https://iesco.com.pk/storage/SCI-FY-2026-28.pdf" class="dropdown-item">
+                                        SCI FY 2026-28                                    </a>
+                                                                                    </div>
+                    </div>
+                                                                <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            IESCO GIS                        </a>
+                        <div class="dropdown-menu border-0 rounded-0 rounded-bottom m-0">
+                                                                                                <a href="https://drive.google.com/file/d/1ek6sF_MrG1O_EM0oYNBYeT7CJ2yGGzQv/view?usp=sharing" class="dropdown-item">
+                                        PDMS                                    </a>
+                                                                                                                                <a href="https://ems.iesco.com.pk/" class="dropdown-item">
+                                        EMS                                    </a>
+                                                                                                                                <a href="https://iesco.com.pk/storage/SOP-GISHT-2020.pdf" class="dropdown-item" target="_blank">
+                                        GIS SOP                                    </a>
+                                                                                                                                <a href="https://iesco.com.pk/gis-maps" class="dropdown-item">
+                                        GIS Maps                                    </a>
+                                                                                    </div>
+                    </div>
+                                                                <a href="https://iesco.com.pk/tenders" 
+                       class="nav-item nav-link ">
+                        Public Notice                    </a>
+                                                                <a href="https://iesco.com.pk/press-release" 
+                       class="nav-item nav-link ">
+                        Press Release                    </a>
+                                                                <a href="https://iesco.com.pk/careers" 
+                       class="nav-item nav-link ">
+                        Careers                    </a>
+                                                                <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            Downloads                        </a>
+                        <div class="dropdown-menu border-0 rounded-0 rounded-bottom m-0">
+                                                                                                <a href="https://iesco.com.pk/customer-downloads" class="dropdown-item">
+                                        Customer Downloads                                    </a>
+                                                                                                                                <a href="https://iesco.com.pk/employee-login" class="dropdown-item">
+                                        Employee Downloads                                    </a>
+                                                                                    </div>
+                    </div>
+                                    </div>
+
+        <!-- Contact Button (Right Side) -->
+        <a href="https://iesco.com.pk/contact" class="btn btn-sm btn-light rounded-pill py-2 px-4 d-none d-lg-block">
+            Contact Us        </a>
+    </div>
+
+    <!-- Sidebar for Mobile -->
+    <div class="sidebar d-lg-none" id="sidebar">
+        <!-- Close Button -->
+        <button class="btn-close" id="closeSidebar" aria-label="Close Sidebar">&times;</button>
+
+        <!-- ✅ Fixed Header -->
+        <div class="sidebar-logo">
+            <a href="https://iesco.com.pk">
+                <img src="https://iesco.com.pk/images/iesco1.png" alt="IESCO Logo" class="img-fluid" style="height: 45px;">
+            </a>
+        </div>
+
+        <!-- ✅ Scrollable Middle Content -->
+        <div class="sidebar-scrollable">
+            <div class="sidebar-content">
+                                                            <div class="sidebar-item">
+                            <a href="#" class="sidebar-link" data-toggle="sidebar-dropdown" data-target="#menu-0">About Us</a>
+                                                            <div class="sidebar-dropdown" id="menu-0" style="display: none;">
+                                                                            <a href="https://iesco.com.pk/about-us" class="sidebar-dropdown-item">History</a>
+                                                                            <a href="https://iesco.com.pk/iesco-bods" class="sidebar-dropdown-item">Board Of Directors</a>
+                                                                            <a href="https://iesco.com.pk/iesco-organization" class="sidebar-dropdown-item">Management</a>
+                                                                            <a href="https://iesco.com.pk/iesco-consumers" class="sidebar-dropdown-item">Consumer Profile</a>
+                                                                            <a href="https://iesco.com.pk/iesco-organogram" class="sidebar-dropdown-item">IESCO Organogram</a>
+                                                                    </div>
+                                                    </div>
+                                                                                <div class="sidebar-item">
+                            <a href="#" class="sidebar-link" data-toggle="sidebar-dropdown" data-target="#menu-1">Consumer Service</a>
+                                                            <div class="sidebar-dropdown" id="menu-1" style="display: none;">
+                                                                            <a href="https://bill.pitc.com.pk/iescobill" class="sidebar-dropdown-item">Get IESCO Duplicate Bill</a>
+                                                                            <a href="https://iesco.com.pk/tariff-guide" class="sidebar-dropdown-item">Tariff Guide</a>
+                                                                            <a href="https://iesco.com.pk/customer-centers" class="sidebar-dropdown-item">Customer Care Centers</a>
+                                                                            <a href="https://iesco.com.pk/storage/CSM.pdf" class="sidebar-dropdown-item">Consumer Service Manual</a>
+                                                                            <a href="https://iesco.com.pk/report-contractors" class="sidebar-dropdown-item">Test Report Contractor</a>
+                                                                            <a href="https://iesco.com.pk/performance-reports" class="sidebar-dropdown-item">Daily Monthly Quartly Reports</a>
+                                                                    </div>
+                                                    </div>
+                                                                                <div class="sidebar-item">
+                            <a href="#" class="sidebar-link" data-toggle="sidebar-dropdown" data-target="#menu-2">Departments</a>
+                                                            <div class="sidebar-dropdown" id="menu-2" style="display: none;">
+                                                                            <a href="https://ibs.pitc.com.pk/dashboard/user/auth/sign-in" class="sidebar-dropdown-item">MIS Reports</a>
+                                                                            <a href="http://dashboard.pitc.com.pk:8080/ords/f?p=113:101" class="sidebar-dropdown-item">IESCO Dashboard</a>
+                                                                            <a href="https://iesco.com.pk/regional-training-centers" class="sidebar-dropdown-item">Regional Training Center</a>
+                                                                            <a href="https://iesco.com.pk/pmu" class="sidebar-dropdown-item">Project Management Unit</a>
+                                                                            <a href="https://iesco.com.pk/search-reference-number" class="sidebar-dropdown-item">Search Reference Number</a>
+                                                                            <a href="https://iesco.com.pk/pension-cell" class="sidebar-dropdown-item">Pension Cell</a>
+                                                                            <a href="https://iesco.com.pk/financial-reports" class="sidebar-dropdown-item">Financial Reports</a>
+                                                                            <a href="https://iesco.com.pk/storage/IESCOLegalStatus.pdf" class="sidebar-dropdown-item">IESCO Legal Status</a>
+                                                                            <a href="https://iesco.com.pk/storage/SCI-FY-2026-28.pdf" class="sidebar-dropdown-item">SCI FY 2026-28</a>
+                                                                    </div>
+                                                    </div>
+                                                                                <div class="sidebar-item">
+                            <a href="#" class="sidebar-link" data-toggle="sidebar-dropdown" data-target="#menu-3">IESCO GIS</a>
+                                                            <div class="sidebar-dropdown" id="menu-3" style="display: none;">
+                                                                            <a href="https://drive.google.com/file/d/1ek6sF_MrG1O_EM0oYNBYeT7CJ2yGGzQv/view?usp=sharing" class="sidebar-dropdown-item">PDMS</a>
+                                                                            <a href="https://ems.iesco.com.pk/" class="sidebar-dropdown-item">EMS</a>
+                                                                            <a href="https://iesco.com.pk/gis-sop" class="sidebar-dropdown-item">GIS SOP</a>
+                                                                            <a href="https://iesco.com.pk/gis-maps" class="sidebar-dropdown-item">GIS Maps</a>
+                                                                    </div>
+                                                    </div>
+                                                                                                                                                                                            <div class="sidebar-item">
+                            <a href="#" class="sidebar-link" data-toggle="sidebar-dropdown" data-target="#menu-7">Downloads</a>
+                                                            <div class="sidebar-dropdown" id="menu-7" style="display: none;">
+                                                                            <a href="https://iesco.com.pk/customer-downloads" class="sidebar-dropdown-item">Customer Downloads</a>
+                                                                            <a href="https://iesco.com.pk/employee-login" class="sidebar-dropdown-item">Employee Downloads</a>
+                                                                    </div>
+                                                    </div>
+                                    
+                                                                                                                                                                                                            <div class="sidebar-item">
+                            <a href="https://iesco.com.pk/tenders" class="sidebar-link">Public Notice</a>
+                        </div>
+                                                                                <div class="sidebar-item">
+                            <a href="https://iesco.com.pk/press-release" class="sidebar-link">Press Release</a>
+                        </div>
+                                                                                <div class="sidebar-item">
+                            <a href="https://iesco.com.pk/careers" class="sidebar-link">Careers</a>
+                        </div>
+                                                                                    </div>
+            
+        </div>
+        <!-- Mobile View Contact Us Btn -->
+        <a href="https://iesco.com.pk/contact"
+            class="btn rounded-pill text-white px-3 py-1 contact-mobile-btn"
+            style="background:#0094ff; border:1px solid #0094ff; font-size:13px; display:inline-block; width:150px;">
+                Contact Us        </a>
+        <!-- ✅ Fixed Footer -->
+        <div class="sidebar-footer">
+            © IESCO 2025 – All rights reserved
+        </div>
+    </div>
+
+    <div class="overlay d-lg-none" id="sidebarOverlay"></div>
+</nav>
+
+<style>
+.new-career::after {
+    top: 15px !important;
+    right: 3px !important;
+}
+    .navbar-toggler {
+        box-shadow: none !important; /* removes the default black glow on click */
+        border-color: white;
+    }
+
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255,255,255,1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+
+    .navbar .navbar-nav .nav-link:hover{
+            color: white;
+    }
+
+    .sidebar-logo {
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 10px;
+        margin: 0 20px;
+        position: absolute;
+        top: 10px;
+        left: 0;
+        right: 0;
+        z-index: 1010;
+    }
+
+    .sidebar-scrollable {
+        flex: 1;
+        overflow-y: auto;
+        padding: 15px 20px;
+        margin-top: 10px; /* reduced space from logo */
+        margin-bottom: 45px; /* space for footer */
+    }
+
+    .sidebar-footer {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        font-size: 12px;
+        color: #777;
+        z-index: 1010;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+    .sidebar-logo img {
+        max-height: 45px;
+    }
+    .btn-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 26px;
+        font-weight: bold;
+        color: #444;
+        background: none;
+        border: none;
+        z-index: 1020;
+    }
+
+    .btn-close:hover {
+        color: #009CFF;
+        transform: scale(1.1);
+    }
+
+    .new-career {
+        position: relative;
+        font-weight: 600;
+    }
+
+    .new-career::after {
+        content: 'New';
+        position: absolute;
+        top: 4px;
+        right: -25px;
+        background: rgba(255, 0, 0, 0.9);
+        color: white;
+        font-weight: 700;
+        font-size: 10px;
+        padding: 2px 5px;
+        border-radius: 10px;
+        text-transform: uppercase;
+        font-family: 'Arial', sans-serif;
+        box-shadow: 0px 0px 5px rgba(255, 0, 0, 0.6);
+        animation: fadeBlink 1.5s infinite;
+    }
+
+    @keyframes  fadeBlink {
+        0% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.7; transform: scale(1.1); }
+        100% { opacity: 1; transform: scale(1); }
+    }
+
+
+    /* Updated Sidebar Styles */
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 250px;
+        height: 100%;
+        background-color: #f8f9fa; /* Changed to off-white */
+        transition: left 0.3s ease;
+        z-index: 1000;
+        /* padding: 20px; */
+        overflow-y: auto;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding-top: 60px; /* space for logo */
+        padding-bottom: 50px; /* space for footer */
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    .sidebar-content {
+        display: flex;
+        flex-direction: column;
+        margin-top: 45px;
+
+    }
+
+    .sidebar-item {
+        margin-bottom: 15px;
+        position: relative; /* Ensures full-width background highlighting */
+
+    }
+
+    .sidebar-link {
+        color: #333; /* Darker text for better contrast */
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+        /* padding: 10px 15px; */
+        display: block; /* Ensures the link takes the full width */
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+        background-color: transparent; /* Default transparent */
+
+    }
+
+    .sidebar-link:hover,
+    .sidebar-link.active {
+        background-color: rgba(0, 156, 255, 0.2); /* Subtle blue background for hover/active */
+    }
+
+    /* .sidebar-dropdown {
+        margin-left: 15px;
+    } */
+
+    .sidebar-dropdown-item {
+        color: #333;
+        text-decoration: none;
+        font-size: 14px;
+        display: block;
+        padding: 10px 15px;
+        background-color: transparent; /* Default transparent */
+
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+        border-bottom: 1px solid #ddd; /* Subtle separator line */
+    }
+
+    .sidebar-dropdown-item:hover,
+    .sidebar-dropdown-item.active {
+        background-color: rgba(0, 156, 255, 0.2); /* Light transparent blue */
+    }
+
+    /* Separator Lines */
+    .sidebar-item:not(:last-child) .sidebar-link {
+        border-bottom: 1px solid #ddd; /* Subtle separator for main items */
+    }
+    body.sidebar-open {
+        overflow: hidden;
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        display: none;
+    }
+
+    .overlay.active {
+        display: block;
+    }
+
+    /* Navbar background change */
+    .navbar.bg-white {
+        background-color: #f8f9fa !important;
+    }
+
+    /* Media Queries */
+    @media (min-width: 992px) {
+        .sidebar {
+            display: none;
+        }
+    }
+
+    @media (max-width: 991px) {
+            .navbar {
+            padding-top: 6px !important;
+            padding-bottom: 6px !important;
+        }
+
+        .navbar-brand img {
+            height: 42px !important; /* slightly smaller logo */
+            margin-left: 8px; /* shift logo slightly to the right */
+        }
+    }
+
+    .navbar-nav {
+        overflow: visible !important;
+        max-height: none !important;
+    }
+@media (max-width: 576px) {
+    .contact-mobile-btn {
+        display: block !important;
+        margin: 0 auto !important;
+    }
+}
+</style>
+
+<script>
+document.getElementById('toggleSidebar').addEventListener('click', function () {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    const body = document.body;
+    const isActive = sidebar.classList.contains('active');
+
+    if (isActive) {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+        body.classList.remove('sidebar-open'); // ✅ re-enable scroll
+    } else { 
+        sidebar.classList.add('active');
+        overlay.classList.add('active');
+        body.classList.add('sidebar-open'); // ✅ disable scroll
+    }
+});
+
+document.getElementById('closeSidebar').addEventListener('click', function () {
+    document.getElementById('sidebar').classList.remove('active');
+    document.getElementById('sidebarOverlay').classList.remove('active');
+    document.body.classList.remove('sidebar-open'); // ✅ re-enable scroll
+    document.querySelector('.navbar').classList.remove('bg-white');
+});
+
+document.getElementById('sidebarOverlay').addEventListener('click', function () {
+    document.getElementById('sidebar').classList.remove('active');
+    this.classList.remove('active');
+    document.body.classList.remove('sidebar-open'); // ✅ re-enable scroll
+    document.querySelector('.navbar').classList.remove('bg-white');
+});
+
+// Dropdown toggling within sidebar
+document.querySelectorAll('[data-toggle="sidebar-dropdown"]').forEach(function (toggle) {
+    toggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('data-target'));
+                // Reset active states for all sidebar items
+        document.querySelectorAll('.sidebar-item').forEach(item => item.classList.remove('active'));
+        document.querySelectorAll('.sidebar-dropdown-item').forEach(link => link.classList.remove('active'));
+
+        // Highlight the clicked item and toggle dropdown
+        const parentItem = this.closest('.sidebar-item');
+        if (parentItem) parentItem.classList.add('active'); // Add active class to the full section
+
+        if (target) {
+            const isVisible = target.style.display === 'block';
+            target.style.display = isVisible ? 'none' : 'block';
+        }
+    });
+});
+
+// Ensure dropdown children are highlighted when clicked
+document.querySelectorAll('.sidebar-dropdown-item').forEach(function (item) {
+    item.addEventListener('click', function () {
+        document.querySelectorAll('.sidebar-dropdown-item').forEach(link => link.classList.remove('active'));
+        this.classList.add('active');
+    });
+});
+
+
+</script>
+    <div class="container-fluid custom-bg mb-5 wow fadeIn" data-wow-delay="0.1s">     
+    <div class="container text-center py-5">
+            <h1 class="display-4 text-white animated slideInDown mb-3">Tariff Guide</h1>                 
+            <nav aria-label="breadcrumb animated slideInDown">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a class="text-white" href="https://iesco.com.pk">Home</a></li>
+                    <li class="breadcrumb-item text-primary active" aria-current="page">Tariff Guide</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.1s">
+                    
+                                            <div class="h-100">              
+                            <div class="custom-header"><strong>S.R.O No. 279 (I)/2026</strong> <span class="header-right">Feburary, 2026</span></div>
+<div class="custom-subheader">A-1 GENERAL SUPPLY TARIFF - RESIDENTIAL</div>
+<table class="table table-striped table-bordered text-center">
+<thead class="table-dark">
+<tr>
+<th class="text-start" width="65">Sr. No.</th>
+<th width="424">TARIFF CATEGORY / PARTICULARS</th>
+<th width="231">FIXED CHARGES Rs/Cons//M</th>
+<th width="222">FIXED CHARGES Rs/kW/M</th>
+<th colspan="2">APPLICABLE VARIABLE CHARGES Rs./kWh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="text-start">a)</td>
+<td>For Sanctioned load up to 5 kW</td>
+<td>-</td>
+<td>-</td>
+<td width="108">-</td>
+<td width="124">-</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>Protected</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td width="108">&nbsp;</td>
+<td width="124">&nbsp;</td>
+</tr>
+<tr>
+<td class="text-start">i</td>
+<td>Up to 50 Units - Life Line</td>
+<td>-</td>
+<td>-</td>
+<td width="108">-</td>
+<td width="124">3.95</td>
+</tr>
+<tr>
+<td class="text-start">ii</td>
+<td>01 - 100 Units - Life Line</td>
+<td>-</td>
+<td>-</td>
+<td width="108">-</td>
+<td width="124">7.74</td>
+</tr>
+<tr>
+<td class="text-start">iii</td>
+<td>001 - 100 Units</td>
+<td>-</td>
+<td>200</td>
+<td width="108">-</td>
+<td width="124">10.54</td>
+</tr>
+<tr>
+<td class="text-start">iv</td>
+<td>101 - 200 Units</td>
+<td>-</td>
+<td>300</td>
+<td width="108">-</td>
+<td width="124">13.01</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>Un-Protected</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td class="text-start">v</td>
+<td>1- 100 Units</td>
+<td>-</td>
+<td>275</td>
+<td width="108">-</td>
+<td width="124">22.44</td>
+</tr>
+<tr>
+<td class="text-start">vi</td>
+<td>101 - 200 Units</td>
+<td>-</td>
+<td>300</td>
+<td width="108">-</td>
+<td width="124">28.91</td>
+</tr>
+<tr>
+<td class="text-start">vii</td>
+<td>201 - 300 Units</td>
+<td>-</td>
+<td>350</td>
+<td width="108">-</td>
+<td width="124">33.10</td>
+</tr>
+<tr>
+<td class="text-start">viii</td>
+<td>301 - 400 Units</td>
+<td>-</td>
+<td>400</td>
+<td width="108">-</td>
+<td width="124">36.46</td>
+</tr>
+<tr>
+<td class="text-start">ix</td>
+<td>401 - 500 Units</td>
+<td>-</td>
+<td>500</td>
+<td width="108">-</td>
+<td width="124">38.95</td>
+</tr>
+<tr>
+<td class="text-start">x</td>
+<td>501 - 600 Units</td>
+<td>-</td>
+<td>675</td>
+<td width="108">-</td>
+<td width="124">40.22</td>
+</tr>
+<tr>
+<td class="text-start">xi</td>
+<td>601 - 700 Units</td>
+<td>-</td>
+<td>675</td>
+<td width="108">-</td>
+<td width="124">41.85</td>
+</tr>
+<tr>
+<td class="text-start">xii</td>
+<td>Above 700 Units</td>
+<td>-</td>
+<td>675</td>
+<td width="108">-</td>
+<td width="124">47.20</td>
+</tr>
+<tr>
+<td class="text-start">b)</td>
+<td>For Sanctioned load 5 kW &amp; above</td>
+<td>-</td>
+<td>-</td>
+<td width="108">-</td>
+<td width="124">-</td>
+</tr>
+<tr>
+<td class="text-start">&nbsp;</td>
+<td>&nbsp;</td>
+<td>-</td>
+<td>-</td>
+<td width="108"><span style="color: rgb(53, 152, 219);"><strong>Peak</strong></span></td>
+<td width="124"><span style="color: rgb(53, 152, 219);"><strong>Off-Peak</strong></span></td>
+</tr>
+<tr>
+<td class="text-start">&nbsp;</td>
+<td>Time Of Use</td>
+<td>-</td>
+<td>675</td>
+<td width="108">46.85</td>
+<td width="124">34.53</td>
+</tr>
+<tr>
+<td class="text-start">c)</td>
+<td>Pre-paid Residential Supply Tariff</td>
+<td>-</td>
+<td>675</td>
+<td width="108">-</td>
+<td width="124">42.12</td>
+</tr>
+<tr>
+<td class="text-start" colspan="6">As per the Authority's decision only protected residential consumers will be given the benifits of one previous slab.</td>
+</tr>
+<tr>
+<td class="text-start" colspan="6">As per Authority decision, residestial Life Line consumer will not be given any slab benefit.</td>
+</tr>
+<tr>
+<td class="text-start" colspan="6">Under tariff A-1, there shall be minimum monthly customer charge at the following rates even if no energy is consumed.Per consumers where monthly fixed charges are applicable,no minimum charges shall be applicable on such consumers,even no even energy consumed.</td>
+</tr>
+<tr>
+<td class="text-start" colspan="6">The fixed charges for Non-ToU domestic consumersshall be applicable based on the sanctioned load.<br>The fixed charges for ToU domestic consumersshall be applicable baaed on 50% ofthe sanctioned load or MD1, whichever le higher.<br>For the month of February 2026, for TOU domestic consumers, where MD1 is not available, fixed charges shall be applicable based on 50% ofthe sanctioned load.</td>
+</tr>
+<tr>
+<td class="text-start" colspan="3">a) Single Phase Connections:</td>
+<td class="text-start" colspan="3">Rs. 75/- per consumer per month</td>
+</tr>
+<tr>
+<td class="text-start" colspan="3">b) Three Phase Connections:</td>
+<td class="text-start" colspan="3">Rs. 150 /- per consumer per month</td>
+</tr>
+<tr>
+<th class="custom-fs" style="background-color: #0096ff; color: white; font-size: 18px; text-align: center; padding: 10px 0;" colspan="12">A-2 GENERAL SUPPLY TARIFF - COMMERCIAL</th>
+</tr>
+<tr>
+<td class="text-start">a)</td>
+<td>For Sanctioned load upto 5 kW</td>
+<td>1000</td>
+<td>-</td>
+<td width="108">-</td>
+<td width="124">37.44</td>
+</tr>
+<tr>
+<td class="text-start">b)</td>
+<td>For Sanctioned load up to 5 kW &amp; Above</td>
+<td>-</td>
+<td>1250</td>
+<td width="108">-</td>
+<td width="124">39.76</td>
+</tr>
+<tr>
+<td class="text-start">&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>-</td>
+<td width="108"><strong><span style="color: rgb(53, 152, 219);">Peak</span></strong></td>
+<td width="124"><strong><span style="color: rgb(53, 152, 219);">Off-Peak</span></strong></td>
+</tr>
+<tr>
+<td class="text-start">c)</td>
+<td>Time Of Use</td>
+<td>-</td>
+<td>1250</td>
+<td width="108">43.82</td>
+<td width="124">35.15</td>
+</tr>
+<tr>
+<td class="text-start">d)</td>
+<td>Electric Vehicle Charging Station</td>
+<td>-</td>
+<td>-</td>
+<td width="108">&nbsp;</td>
+<td width="124">23.57</td>
+</tr>
+<tr>
+<td class="text-start">e)</td>
+<td>Pre-paid Commercial Supply Tariff</td>
+<td>-</td>
+<td>1250</td>
+<td width="108">&nbsp;</td>
+<td width="124">42.38</td>
+</tr>
+<tr>
+<td class="text-start" colspan="6">Where Fixed charges are applicable Rs/KW/Month the charge shall be billed based on 25% of sanctioned load or actual MDI for the month which ever is higher.</td>
+</tr>
+<tr>
+<th class="custom-fs" style="background-color: #0096ff; color: white; font-size: 18px; text-align: center; padding: 10px 0;" colspan="12">A-3 GENERAL SERVICES</th>
+</tr>
+<tr>
+<td class="text-start">a)</td>
+<td>General Services</td>
+<td>1000</td>
+<td>-</td>
+<td width="108">-</td>
+<td width="124">42.48</td>
+</tr>
+<tr>
+<td class="text-start">c)</td>
+<td>Pre-paid General Services Supply Tariff</td>
+<td>1000</td>
+<td>-</td>
+<td width="108">-</td>
+<td width="124">42.48</td>
+</tr>
+<tr>
+<td class="text-start" colspan="6">Where Fixed charges are applicable Rs/KW/Month the charge shall be billed based on 25% of sanctioned load or actual MDI for the month which ever is higher.</td>
+</tr>
+<tr>
+<th class="custom-fs" style="background-color: #0096ff; color: white; font-size: 18px; text-align: center; padding: 10px 0;" colspan="12">B - INDUSTRIAL</th>
+</tr>
+<tr>
+<td class="text-start">B1</td>
+<td>Up To 25 kW (at 400/230 Volts)</td>
+<td>1000</td>
+<td>-</td>
+<td width="108">-</td>
+<td width="124">26.23</td>
+</tr>
+<tr>
+<td class="text-start">B2(a)</td>
+<td>Exceeding 25-500 kW (at 400 Volts)</td>
+<td>-</td>
+<td>1250</td>
+<td width="108">-</td>
+<td width="124">26.16</td>
+</tr>
+<tr>
+<td class="text-start">&nbsp;</td>
+<td>Time Of Use</td>
+<td>-</td>
+<td>&nbsp;</td>
+<td width="108"><strong><span style="color: rgb(53, 152, 219);">Peak</span></strong></td>
+<td width="124"><strong><span style="color: rgb(53, 152, 219);">Off-Peak</span></strong></td>
+</tr>
+<tr>
+<td class="text-start">B1 (b)</td>
+<td>Upto 25 kW</td>
+<td>1000</td>
+<td>-</td>
+<td width="108">35.74</td>
+<td width="124">25.48</td>
+</tr>
+<tr>
+<td class="text-start">B2(b)</td>
+<td>Exceeding 25-500 kW (at 400 Volts)</td>
+<td>-</td>
+<td>1250</td>
+<td width="108">35.68</td>
+<td width="124">22.83</td>
+</tr>
+<tr>
+<td class="text-start">B3</td>
+<td>For All Loads up to 5000 kW (at 11,33 kV)</td>
+<td>-</td>
+<td>1250</td>
+<td width="108">35.68</td>
+<td width="124">23.67</td>
+</tr>
+<tr>
+<td class="text-start">B4</td>
+<td>For All Loads (at 66,132 kV &amp; above)</td>
+<td>-</td>
+<td>1250</td>
+<td width="108">35.68</td>
+<td width="124">23.38</td>
+</tr>
+<tr>
+<td class="text-start" colspan="3">Pre-paid Industrial Supply Tariff</td>
+<td>1250</td>
+<td width="108">&nbsp;</td>
+<td width="124">35.72</td>
+</tr>
+<tr>
+<th class="custom-fs" style="background-color: #0096ff; color: white; font-size: 18px; text-align: center; padding: 10px 0;" colspan="12">C - SINGLE-POINT SUPPLY</th>
+</tr>
+<tr>
+<td class="text-start">C-1</td>
+<td>For supply at 400/230 Volts</td>
+<td>-</td>
+<td>-</td>
+<td width="108">-</td>
+<td width="124">-</td>
+</tr>
+<tr>
+<td class="text-start">a)</td>
+<td>Sanctioned load less than 5 kW</td>
+<td>2000</td>
+<td>-</td>
+<td width="108">-</td>
+<td width="124">43.39</td>
+</tr>
+<tr>
+<td class="text-start">b)</td>
+<td>Sanctioned load above 5 kW &amp; up to 500 kW</td>
+<td>-</td>
+<td>1250</td>
+<td width="108">-</td>
+<td width="124">40.63</td>
+</tr>
+<tr>
+<td class="text-start">C-2(a)</td>
+<td>For supply at 11,33 kV up to and including 5000 kW</td>
+<td>-</td>
+<td>1250</td>
+<td width="108">-</td>
+<td width="124">40.57</td>
+</tr>
+<tr>
+<td class="text-start">C-3(a)</td>
+<td>For supply at 66 kV &amp; above and sanctioned load above 5000 kW</td>
+<td>-</td>
+<td>1250</td>
+<td width="108">-</td>
+<td width="124">40.77</td>
+</tr>
+<tr>
+<td class="text-start">&nbsp;</td>
+<td>Time Of Use (Optional)</td>
+<td>-</td>
+<td>&nbsp;</td>
+<td width="108"><strong><span style="color: rgb(53, 152, 219);">Peak</span></strong></td>
+<td width="124"><strong><span style="color: rgb(53, 152, 219);">Off-Peak</span></strong></td>
+</tr>
+<tr>
+<td class="text-start">C-1(c)</td>
+<td>For supply at 400/230 Volts above 5 kW &amp; up to 500 kW</td>
+<td>-</td>
+<td>1250</td>
+<td width="108">46.31</td>
+<td width="124">37.54</td>
+</tr>
+<tr>
+<td class="text-start">C-1(b)</td>
+<td>For supply at 11,33 kV up to and including 5000 kW</td>
+<td>-</td>
+<td>1250</td>
+<td width="108">46.31</td>
+<td width="124">36.03</td>
+</tr>
+<tr>
+<td class="text-start">C-3(b)</td>
+<td>For supply at 66 kV &amp; above and sanctioned load above 5000 kW</td>
+<td>-</td>
+<td>1250</td>
+<td width="108">46.31</td>
+<td width="124">35.76</td>
+</tr>
+<tr>
+<td class="text-start" colspan="3">Pre-paid Bulk Supply Tariff</td>
+<td>1250</td>
+<td width="108">&nbsp;</td>
+<td width="124">44.87</td>
+</tr>
+<tr>
+<td class="text-start" colspan="6">Where Fixed charges are applicable Rs/KW/Month the charge shall be billed based on 25% of sanctioned load or actual MDI for the month which ever is higher.</td>
+</tr>
+<tr>
+<th class="custom-fs" style="background-color: #0096ff; color: white; font-size: 18px; text-align: center; padding: 10px 0;" colspan="12">D - AGRICULTURE TARIFF</th>
+</tr>
+<tr>
+<td class="text-start">D-1(a)</td>
+<td>SCARP less than 5 kW</td>
+<td>-</td>
+<td>-</td>
+<td width="108">-</td>
+<td width="124">39.87</td>
+</tr>
+<tr>
+<td class="text-start">D-2(a)</td>
+<td>Agricultural Tube Wells</td>
+<td>-</td>
+<td>400</td>
+<td width="108">-</td>
+<td width="124">28.90</td>
+</tr>
+<tr>
+<td class="text-start">&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>-</td>
+<td width="108"><strong><span style="color: rgb(53, 152, 219);">Peak</span></strong></td>
+<td width="124"><strong><span style="color: rgb(53, 152, 219);">Off-Peak</span></strong></td>
+</tr>
+<tr>
+<td class="text-start">D-1(b)</td>
+<td>SCARP 5 kW &amp; above</td>
+<td>-</td>
+<td>400</td>
+<td width="108">42.79</td>
+<td width="124">34.71</td>
+</tr>
+<tr>
+<td class="text-start">D-2(b)</td>
+<td>Agricultural 5 kW &amp; above</td>
+<td>-</td>
+<td>400</td>
+<td width="108">29.54</td>
+<td width="124">28.69</td>
+</tr>
+<tr>
+<td class="text-start" colspan="3">Pre-paid Agri &amp; Scarp Supply Tariff</td>
+<td>400</td>
+<td width="108">&nbsp;</td>
+<td width="124">33.15</td>
+</tr>
+<tr>
+<td class="text-start" colspan="6">Under this tariff, there shall be minimum monthly charges of Rs.2000/- per consumer per month, even if no energy is consumed.</td>
+</tr>
+<tr>
+<td class="text-start" colspan="6">Note:- The consumers having sanctioned load less than 5 kW can opt for TOU metering.</td>
+</tr>
+<tr>
+<th class="custom-fs" style="background-color: #0096ff; color: white; font-size: 18px; text-align: center; padding: 10px 0;" colspan="12">E - TEMPORARY SUPPLY TARIFFS</th>
+</tr>
+<tr>
+<td class="text-start">E-1(i)</td>
+<td>Residential Supply</td>
+<td>-</td>
+<td>675</td>
+<td width="108">-</td>
+<td width="124">52.89</td>
+</tr>
+<tr>
+<td class="text-start">E-1(ii)</td>
+<td>Commercial Supply</td>
+<td>5000</td>
+<td>-</td>
+<td width="108">-</td>
+<td width="124">53.44</td>
+</tr>
+<tr>
+<td class="text-start">E-2</td>
+<td>Industrial Supply</td>
+<td>5000</td>
+<td>-</td>
+<td width="108">-</td>
+<td width="124">42.25</td>
+</tr>
+<tr>
+<th class="custom-fs" style="background-color: #0096ff; color: white; font-size: 18px; text-align: center; padding: 10px 0;" colspan="12">F - SEASONAL INDUSTRIAL SUPPLY TARIFF</th>
+</tr>
+<tr>
+<td>-</td>
+<td colspan="5">&nbsp;</td>
+</tr>
+<tr>
+<td class="text-center" colspan="6">125% of relevant industrial tariff</td>
+</tr>
+<tr>
+<td class="text-start">Note:</td>
+<td class="text-start" colspan="5">Tariff-F consumers will have the option to convert to Regular Tariff and vice versa. This option can be exercised at the time of a new connection or at the beginning of the season. Once exercised , the option remains in force for at least one year.</td>
+</tr>
+<tr>
+<th class="custom-fs" style="background-color: #0096ff; color: white; font-size: 18px; text-align: center; padding: 10px 0;" colspan="12">G- PUBLIC LIGHTING</th>
+</tr>
+<tr>
+<td class="text-start">G</td>
+<td>Street Lighting</td>
+<td>2000</td>
+<td>-</td>
+<td width="108">&nbsp;</td>
+<td width="124">42.91</td>
+</tr>
+<tr>
+<td colspan="6">125% of relevant industrial tariff</td>
+</tr>
+<tr>
+<th class="custom-fs" style="background-color: #0096ff; color: white; font-size: 18px; text-align: center; padding: 10px 0;" colspan="12">H - RESIDENTIAL COLONIES ATTACHED TO INDUSTRIAL PREMISES</th>
+</tr>
+<tr>
+<td class="text-start">H</td>
+<td>Residential Colonies attached to industrial premises</td>
+<td>2000</td>
+<td>-</td>
+<td width="108">-</td>
+<td width="124">42.10</td>
+</tr>
+<tr>
+<th class="custom-fs" style="background-color: #0096ff; color: white; font-size: 18px; text-align: center; padding: 10px 0;" colspan="12">K - SPECIAL CONTRACTS</th>
+</tr>
+<tr>
+<td class="text-start">1</td>
+<td>Azad Jammu &amp; Kashmir (AJK)</td>
+<td>-</td>
+<td>1250</td>
+<td width="108">-</td>
+<td width="124">26.45</td>
+</tr>
+<tr>
+<td class="text-start">&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td width="108"><strong><span style="color: rgb(53, 152, 219);">Peak</span></strong></td>
+<td width="124"><strong><span style="color: rgb(53, 152, 219);">Off-Peak</span></strong></td>
+</tr>
+<tr>
+<td class="text-start">&nbsp;</td>
+<td>Time Of Use</td>
+<td>-</td>
+<td>1250</td>
+<td width="108">28.85</td>
+<td width="124">25.73</td>
+</tr>
+<tr>
+<td class="text-start">2</td>
+<td>Rawat Lab</td>
+<td>2000</td>
+<td>-</td>
+<td width="108">-</td>
+<td width="124">42.25</td>
+</tr>
+</tbody>
+</table>
+                        </div>
+                                    </div>
+            
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid footer-bg-blue text-body footer mt-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container py-5">
+        <div class="row g-5">
+            <!-- Address Section -->
+            <div class="col-lg-3 col-md-6 custom-footer">
+                <h5 class="text-light mb-4">Address</h5>
+
+                <p class="mb-2"><i class="fa fa-map-marker-alt"></i>IESCO Head Office Street # 40, Sector G7/4 Islamabad</p>
+                <p class="mb-2"><i class="fa fa-phone-alt"></i>(051)9252937</p>
+                <a class="useful-link no-arrow no-padding text-lowercase" href="http://webmail.iesco.com.pk:2096" target="_blank" rel="noopener noreferrer">
+                    <i class="fa fa-envelope"></i>  webmail.iesco.com.pk:2096
+                </a>
+                
+            </div>
+
+            <!-- DISCOs Section -->
+            <div class="col-lg-2 col-md-6">
+                <h5 class="text-light mb-4">DISCOs</h5>
+                <div class="row">
+                    <div class="col-6">
+                        <a class="useful-link" href="https://www.lesco.gov.pk/" target="_blank"><span>LESCO</span></a>
+                        <a class="useful-link" href="https://www.fesco.com.pk/" target="_blank"><span>FESCO</span></a>
+                        <a class="useful-link" href="https://www.gepco.com.pk/" target="_blank"><span>GEPCO</span></a>
+                        <a class="useful-link" href="https://mepco.com.pk/" target="_blank"><span>MEPCO</span></a>
+                        <a class="useful-link" href="https://www.hesco.gov.pk/" target="_blank"><span>HESCO</span></a>
+                    </div>
+                    <div class="col-6">
+                        <a class="useful-link" href="https://www.sepco.com.pk/" target="_blank"><span>SEPCO</span></a>
+                        <a class="useful-link" href="https://pesco.com.pk/" target="_blank"><span>PESCO</span></a>
+                        <a class="useful-link" href="https://www.qesco.com.pk/" target="_blank"><span>QESCO</span></a>
+                        <a class="useful-link" href="https://www.tesco.gov.pk/" target="_blank"><span>TESCO</span></a>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Useful Links Section -->
+            <div class="col-lg-4 col-md-6">
+                <h5 class="text-light mb-4">Useful Links</h5>
+                <div class="row g-2">
+                                            <a class="useful-link" href="https://iesco.com.pk/storage/useful-links/February2026/f3jvXndTtkdCA9ddSToz.pdf" target="_blank">
+                            <span>Conflict of Interest Policy</span>
+                        </a>
+                                            <a class="useful-link" href="https://iesco.com.pk/storage/useful-links/February2026/lKHNO2tCzTbaac0ZrgNz.pdf" target="_blank">
+                            <span>Code of Conduct Rules</span>
+                        </a>
+                                            <a class="useful-link" href="https://iesco.com.pk/ev-announcement-green-energy" target="_blank">
+                            <span>EV Announcements</span>
+                        </a>
+                                            <a class="useful-link" href="https://iesco.com.pk/storage/useful-links/January2026/CX8oSMHo4PmMQYfexDlN.pdf" target="_blank">
+                            <span>IESCO Material Disposal Procedure, 2025</span>
+                        </a>
+                                            <a class="useful-link" href="https://iesco.com.pk/storage/useful-links/October2025/2dsOBsXQYo82JOtVj9f4.pdf" target="_blank">
+                            <span>Revised Financial Powers Book for IESCO 2018</span>
+                        </a>
+                                            <a class="useful-link" href="https://mnr.pitc.com.pk/" target="_blank">
+                            <span>Electricity Consumer&#039;s CNIC Number Registration</span>
+                        </a>
+                                            <a class="useful-link" href="https://iesco.com.pk/storage/useful-links/July2025/ImAm5BRan1X4I1t39gtC.pdf" target="_blank">
+                            <span>Cybersecurity Advisory for DISCOs</span>
+                        </a>
+                                            <a class="useful-link" href="https://iesco.com.pk/storage/useful-links/July2025/QdkR6Eq943A2BXBjeNWs.pdf" target="_blank">
+                            <span>Annual Procurement Plan  (MM) 2025-26</span>
+                        </a>
+                                            <a class="useful-link" href="https://iesco.com.pk/storage/useful-links/July2026/BnrBi8DMv6AE55Pp3Chw.pdf" target="_blank">
+                            <span>Annual Procurement Plan (PMU) 2026-27</span>
+                        </a>
+                                    </div>
+            </div>
+
+            <!-- Employee SAP Section -->
+            <div class="col-lg-3 col-md-6 custom-footer">
+                <h5 class="text-light mb-4">Employee Corner</h5>
+                <p class=employee-info>Access important info by login...</p>
+                <div class="sap-buttons-container">
+                    <a href="https://iesco.com.pk/employee-login" class="btn btn-primary sap-btn mb-3">
+                        <span>Employee Login</span>
+                    </a>
+                </div>
+                <h5 class="text-light mb-4">Social Links</h5>
+                <div class="d-flex pt-2">
+                    <a class="btn btn-square btn-outline-secondary rounded-circle me-2" href="https://x.com/IESCO_Official" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-square btn-outline-secondary rounded-circle me-2" href="https://www.facebook.com/iescoofficialpk" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-square btn-outline-secondary rounded-circle me-2" href="https://www.whatsapp.com/channel/0029Vay0mKKHLHQSI3vdju0l" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a class="btn btn-square btn-outline-secondary rounded-circle me-2" href="https://www.youtube.com/@iescoofficial" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a class="btn btn-square btn-outline-secondary rounded-circle me-2" href="https://www.instagram.com/iescoofficial/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-square btn-outline-secondary rounded-circle me-2" href="https://www.tiktok.com/@iescoofficial" target="_blank"><i class="fab fa-tiktok fa-1x"></i></a>
+
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copyright Section -->
+    <div class="container-fluid copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                   Copyright &copy; 2025 <a href="#">IESCO</a>, All Rights Reserved.
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    Designed By: IESCO MIS
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+</body>
+
+
+</html>
