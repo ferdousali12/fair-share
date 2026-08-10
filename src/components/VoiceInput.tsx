@@ -31,7 +31,9 @@ export default function VoiceInput({ onResult }: VoiceInputProps) {
     if (recognitionRef.current) {
       try {
         recognitionRef.current.stop();
-      } catch { /* already stopped */ }
+      } catch {
+        /* already stopped */
+      }
       recognitionRef.current = null;
     }
   }, []);
@@ -56,7 +58,12 @@ export default function VoiceInput({ onResult }: VoiceInputProps) {
           category: data.category || 'other',
           note: data.note || trimmed,
           splitType: data.splitType === 'usage' ? 'usage' : 'equal',
-          scope: data.scope === 'personal' ? 'individual' : (data.scope === 'collective' ? 'collective' : 'individual'),
+          scope:
+            data.scope === 'personal'
+              ? 'individual'
+              : data.scope === 'collective'
+              ? 'collective'
+              : 'individual',
           usageAmount: data.usageAmount ?? undefined,
           usageUnit: (data.usageUnit ?? undefined) as ParsedExpense['usageUnit'],
         };
@@ -100,6 +107,7 @@ export default function VoiceInput({ onResult }: VoiceInputProps) {
     interimTextRef.current = '';
   }, [stopRecognition]);
 
+  // ── Speech recognition setup (FIXED: added error logging + en-US) ──
   useEffect(() => {
     if (!isSupported || !SpeechRecognitionAPI) return;
 
@@ -107,7 +115,7 @@ export default function VoiceInput({ onResult }: VoiceInputProps) {
       const recognition = new SpeechRecognitionAPI();
       recognition.continuous = true;
       recognition.interimResults = true;
-      recognition.lang = 'en-IN';
+      recognition.lang = 'en-US'; // changed from 'en-IN'
 
       recognition.onresult = (event: any) => {
         let interim = '';
@@ -130,8 +138,20 @@ export default function VoiceInput({ onResult }: VoiceInputProps) {
         setInterimText(interim);
       };
 
-      recognition.onerror = () => setIsListening(false);
-      recognition.onend = () => setIsListening(false);
+      recognition.onerror = (event: any) => {
+        console.error('[VoiceInput] SpeechRecognition error:', event.error);
+        setIsListening(false);
+
+        if (event.error === 'not-allowed' || event.error === 'service-not-allowed') {
+          setShowUnsupported(true);
+          setTimeout(() => setShowUnsupported(false), 3000);
+        }
+      };
+
+      recognition.onend = () => {
+        console.log('[VoiceInput] SpeechRecognition ended');
+        setIsListening(false);
+      };
 
       recognition.start();
       recognitionRef.current = recognition;
@@ -148,8 +168,14 @@ export default function VoiceInput({ onResult }: VoiceInputProps) {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
       const hasText = finalTextRef.current || interimTextRef.current;
-      if (e.key === 'Enter' && hasText) { e.preventDefault(); stopAndSubmit(); }
-      if (e.key === 'Escape') { e.preventDefault(); stopAndDiscard(); }
+      if (e.key === 'Enter' && hasText) {
+        e.preventDefault();
+        stopAndSubmit();
+      }
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        stopAndDiscard();
+      }
     };
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
@@ -178,31 +204,39 @@ export default function VoiceInput({ onResult }: VoiceInputProps) {
   return (
     <>
       {isListening && !isProcessing && (
-        <div className="fixed inset-0 z-30 flex flex-col items-center justify-end pb-32 pointer-events-none">
-          <div className="bg-white/90 backdrop-blur-sm rounded-2xl px-6 py-4 shadow-card max-w-xs mx-auto mb-4">
-            <p className="text-sm text-green-900 text-center min-h-[1.25rem]">
-              {displayText.trim() || 'Listening...'}
-            </p>
-            <div className="flex items-center justify-center gap-1 mt-3 h-8">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <div key={i} className="w-1.5 bg-accent rounded-full animate-waveform"
-                  style={{ animationDelay: `${i * 0.12}s`, animationDuration: `${0.6 + Math.random() * 0.3}s` }} />
-              ))}
-            </div>
+        <div className="fixed bottom-52 left-1/2 -translate-x-1/2 z-40 w-[90%] max-w-sm text-center">
+          <p className="text-sm text-green-900 bg-white/90 rounded-xl px-4 py-2 shadow-card mb-2">
+            {displayText.trim() || 'Listening...'}
+          </p>
+          <div className="flex items-center justify-center gap-1 h-6">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <div
+                key={i}
+                className="w-1.5 bg-accent rounded-full animate-waveform"
+                style={{
+                  animationDelay: `${i * 0.12}s`,
+                  animationDuration: `${0.6 + Math.random() * 0.3}s`,
+                }}
+              />
+            ))}
           </div>
         </div>
       )}
 
       {isListening && hasText && !isProcessing && (
         <div className="fixed bottom-36 left-1/2 -translate-x-1/2 z-40 flex items-center gap-3">
-          <button onClick={stopAndDiscard}
+          <button
+            onClick={stopAndDiscard}
             className="w-11 h-11 rounded-full bg-white border border-border shadow-card flex items-center justify-center hover:bg-muted active:scale-[0.93] transition-all cursor-pointer animate-fade-slide-in"
-            aria-label="Discard">
+            aria-label="Discard"
+          >
             <MicOff className="w-5 h-5 text-foreground" />
           </button>
-          <button onClick={stopAndSubmit}
+          <button
+            onClick={stopAndSubmit}
             className="bg-primary text-white font-semibold px-6 py-3 rounded-xl flex items-center gap-2 shadow-card hover:bg-primary-hover active:scale-[0.97] transition-all cursor-pointer animate-slide-up"
-            aria-label="Done">
+            aria-label="Done"
+          >
             <Mic className="w-4 h-4" /> <span>Done</span>
           </button>
         </div>
@@ -221,17 +255,27 @@ export default function VoiceInput({ onResult }: VoiceInputProps) {
 
       {showUnsupported && (
         <div className="fixed bottom-28 left-1/2 -translate-x-1/2 z-40 bg-green-900 text-white text-xs px-4 py-2.5 rounded-xl shadow-card animate-slide-up whitespace-nowrap">
-          Voice not supported. Use quick-add instead.
+          Voice not supported or mic blocked. Use quick-add instead.
         </div>
       )}
 
-      <button onClick={toggleListening} disabled={isProcessing}
+      <button
+        onClick={toggleListening}
+        disabled={isProcessing}
         className={`fixed z-40 bottom-20 left-1/2 -translate-x-1/2 w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-all cursor-pointer disabled:opacity-50 ${
-          isListening ? 'bg-destructive text-white animate-mic-pulse' : 'bg-primary text-white animate-mic-idle hover:bg-primary-hover active:scale-[0.97]'
+          isListening
+            ? 'bg-destructive text-white animate-mic-pulse'
+            : 'bg-primary text-white animate-mic-idle hover:bg-primary-hover active:scale-[0.97]'
         }`}
         aria-label={isListening ? 'Stop and confirm' : 'Start voice input'}
       >
-        {isProcessing ? <Loader2 className="w-6 h-6 animate-spin" /> : isListening ? <MicOff className="w-6 h-6" /> : <Mic className="w-6 h-6" />}
+        {isProcessing ? (
+          <Loader2 className="w-6 h-6 animate-spin" />
+        ) : isListening ? (
+          <MicOff className="w-6 h-6" />
+        ) : (
+          <Mic className="w-6 h-6" />
+        )}
       </button>
     </>
   );
